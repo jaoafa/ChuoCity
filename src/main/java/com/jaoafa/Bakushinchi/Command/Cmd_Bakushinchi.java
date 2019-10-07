@@ -64,6 +64,13 @@ public class Cmd_Bakushinchi implements CommandExecutor {
 					}
 
 					RegionManager rm = wg.getRegionManager(player.getWorld());
+
+					if (rm.hasRegion(id)) {
+						player.sendMessage(
+								"[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。指定された範囲名は既に使用されています。");
+						return true;
+					}
+
 					ApplicableRegionSet regionlist = rm.getApplicableRegions(protectedregion);
 
 					if (regionlist.size() == 0) {
