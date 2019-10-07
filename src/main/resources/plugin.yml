@@ -1,0 +1,15 @@
+name: Bakushinchi
+main: com.jaoafa.Bakushinchi.Main
+version: 0.0.1
+description: Bakushinchi
+author: mine_book000
+database: true
+softdepend:
+  - WorldEdit
+  - WorldGuard
+commands:
+  bakushinchi:
+    description: 爆新地関連の作業を行います。
+    usage: |
+      /bakushinchi: 爆新地関連の作業を行います。
+    permission: bakushinchi.bakushinchi

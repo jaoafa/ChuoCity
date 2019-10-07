@@ -1,0 +1,106 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.jaoafa</groupId>
+	<artifactId>Bakushinchi</artifactId>
+	<version>0.0.1</version>
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<finalName>Bakushinchi</finalName>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>com.jaoafa.Bakushinchi.Main</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<targetPath>.</targetPath>
+				<filtering>true</filtering>
+				<directory>src/main/resources/</directory>
+			</resource>
+		</resources>
+	</build>
+	<repositories>
+		<!-- Spigot/Bukkit -->
+		<repository>
+			<id>spigot-repo</id>
+			<url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+		</repository>
+		<!-- LuckPerms -->
+		<repository>
+			<id>TheCentralRepository</id>
+			<url>https://repo1.maven.org/maven2/</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<!--Spigot-API -->
+		<dependency>
+			<groupId>org.spigotmc</groupId>
+			<artifactId>spigot-api</artifactId>
+			<version>1.12.2-R0.1-SNAPSHOT</version>
+		</dependency>
+		<!--Bukkit API -->
+		<dependency>
+			<groupId>org.bukkit</groupId>
+			<artifactId>bukkit</artifactId>
+			<version>1.12.2-R0.1-SNAPSHOT</version>
+		</dependency>
+		<!-- LuckPerms -->
+		<dependency>
+			<groupId>me.lucko.luckperms</groupId>
+			<artifactId>luckperms-api</artifactId>
+			<version>4.0</version>
+		</dependency>
+		<!-- WorldGuard -->
+		<dependency>
+			<groupId>com.sk89q.worldguard</groupId>
+			<artifactId>worldguard</artifactId>
+			<version>6.2.1;84bc322</version>
+			<systemPath>${basedir}/lib/worldguard-6.2.1.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+		<!-- WorldEdit -->
+		<dependency>
+			<groupId>com.sk89q.worldedit</groupId>
+			<artifactId>worldedit</artifactId>
+			<version>6.1.8-SNAPSHOT;cd4729f</version>
+			<systemPath>${basedir}/lib/worldedit-bukkit-6.1.7.3.jar</systemPath>
+			<scope>system</scope>
+		</dependency>
+	</dependencies>
+</project>
