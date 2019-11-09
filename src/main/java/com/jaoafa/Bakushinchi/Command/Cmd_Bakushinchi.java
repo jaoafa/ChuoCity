@@ -28,7 +28,6 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedPolygonalRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion.CircularInheritanceException;
 
 public class Cmd_Bakushinchi implements CommandExecutor {
 
@@ -109,7 +108,7 @@ public class Cmd_Bakushinchi implements CommandExecutor {
 						return true;
 					}
 
-					protectedregion.setParent(firstregion);
+					//protectedregion.setParent(firstregion);
 					DefaultDomain owners = new DefaultDomain();
 					owners.addPlayer(player.getUniqueId());
 					protectedregion.setOwners(owners);
@@ -131,11 +130,11 @@ public class Cmd_Bakushinchi implements CommandExecutor {
 					player.sendMessage(
 							"[BAKUSHINCHI] " + ChatColor.GREEN + "範囲が選択されていません。");
 					return true;
-				} catch (CircularInheritanceException e) {
+				} /* catch (CircularInheritanceException e) {
 					player.sendMessage(
 							"[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。" + e.getMessage());
 					return true;
-				}
+					}*/
 			}
 		}
 		player.sendMessage(
