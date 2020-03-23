@@ -31,7 +31,7 @@ public class Event_AntiBlockUnderDestroy implements Listener {
 	public static Map<UUID, Integer> destroycount = new HashMap<>();
 	public static Map<UUID, Boolean> destroyAlerted = new HashMap<>();
 
-	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onAntiBlockUnderDestroy(BlockBreakEvent event) {
 		Player player = event.getPlayer();
 		UUID uuid = player.getUniqueId();
