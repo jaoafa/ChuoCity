@@ -4,6 +4,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.Bakushinchi.Command.Cmd_Bakushinchi;
 import com.jaoafa.Bakushinchi.Event.Event_AntiBlockUnderDestroy;
+import com.jaoafa.Bakushinchi.Event.Event_AntiClockRedstone;
 import com.jaoafa.Bakushinchi.Event.Event_BakushinchiRailChecker;
 import com.jaoafa.Bakushinchi.Event.Event_BakushinchiY50Destroy;
 
@@ -23,6 +24,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Event_BakushinchiRailChecker(), this);
 		getServer().getPluginManager().registerEvents(new Event_AntiBlockUnderDestroy(), this);
 		getServer().getPluginManager().registerEvents(new Event_BakushinchiY50Destroy(), this);
+		getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
 	}
 
 	public static JavaPlugin getJavaPlugin() {
