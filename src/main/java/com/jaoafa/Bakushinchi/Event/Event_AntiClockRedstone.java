@@ -1,10 +1,6 @@
 package com.jaoafa.Bakushinchi.Event;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import org.bukkit.Bukkit;
@@ -17,13 +13,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockRedstoneEvent;
-import org.bukkit.plugin.Plugin;
 
+import com.jaoafa.Bakushinchi.Main;
 import com.jaoafa.Bakushinchi.PermissionsManager;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.managers.RegionManager;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class Event_AntiClockRedstone implements Listener {
 	Map<Location, Long> redstoneclocks = new HashMap<>();
@@ -38,29 +30,12 @@ public class Event_AntiClockRedstone implements Listener {
 		if (block.getType() != Material.REDSTONE_WIRE) {
 			return;
 		}
+
 		if (event.getOldCurrent() != 0 && event.getNewCurrent() != 15) {
 			return; // 0から15になる状態、つまりクロック回路
 		}
-		if (!block.getWorld().getName().equalsIgnoreCase("Jao_Afa")) {
-			return;
-		}
-		WorldGuardPlugin wg = getWorldGuard();
-		if (wg == null) {
-			return;
-		}
-		RegionManager rm = wg.getRegionManager(block.getWorld());
-		ApplicableRegionSet regions = rm.getApplicableRegions(block.getLocation());
-		if (regions.size() == 0) {
-			return;
-		}
-		List<ProtectedRegion> inheritance = new LinkedList<ProtectedRegion>();
-		Iterator<ProtectedRegion> iterator = regions.iterator();
-		while (iterator.hasNext()) {
-			inheritance.add(iterator.next());
-		}
-		Collections.reverse(inheritance);
-		ProtectedRegion firstregion = inheritance.get(0);
-		if (!firstregion.getId().equalsIgnoreCase("Bakushinchi")) {
+
+		if (!Main.isBakushinchi(loc)) {
 			return;
 		}
 
@@ -115,15 +90,5 @@ public class Event_AntiClockRedstone implements Listener {
 			System.out.println("[AntiClock] 爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
 					+ loc.getBlockZ() + "にあったクロック回路を停止しました。");
 		}
-	}
-
-	private WorldGuardPlugin getWorldGuard() {
-		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
-
-		if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-			return null;
-		}
-
-		return (WorldGuardPlugin) plugin;
 	}
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -201,7 +202,7 @@ public class PermissionsManager implements Listener {
 	 * @throws UnsupportedOperationException 権限管理プラグインが見つからないときに発生
 	 * @throws IllegalArgumentException プレイヤーが見つからないときに発生
 	 */
-	public static String getPermissionMainGroup(String player)
+	public static String getPermissionMainGroup(OfflinePlayer player)
 			throws UnsupportedOperationException, IllegalArgumentException {
 		// 権限管理プラグインが自動選択されてなかったら、自動選択する。
 		if (SelectPermissionsPlugin == null)
@@ -229,7 +230,7 @@ public class PermissionsManager implements Listener {
 				throw new UnsupportedOperationException("権限管理プラグインが見つかりません！");
 			}
 			LuckPermsApi LPApi = LuckPerms.getApi();
-			User LPplayer = LPApi.getUser(player);
+			User LPplayer = LPApi.getUser(player.getUniqueId());
 			if (LPplayer == null) {
 				throw new IllegalArgumentException("指定されたプレイヤーは見つかりません。");
 			}

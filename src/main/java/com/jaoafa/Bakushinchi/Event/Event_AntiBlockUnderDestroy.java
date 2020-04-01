@@ -1,10 +1,6 @@
 package com.jaoafa.Bakushinchi.Event;
 
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -18,13 +14,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.plugin.Plugin;
 
+import com.jaoafa.Bakushinchi.Main;
 import com.jaoafa.Bakushinchi.PermissionsManager;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
-import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.managers.RegionManager;
-import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 
 public class Event_AntiBlockUnderDestroy implements Listener {
 	public static Map<UUID, Location> destroy = new HashMap<>();
@@ -42,27 +34,7 @@ public class Event_AntiBlockUnderDestroy implements Listener {
 		int y = loc.getBlockY();
 		int z = loc.getBlockZ();
 
-		if (!world.getName().equalsIgnoreCase("Jao_Afa")) {
-			return; // Jao_Afa以外では適用しない
-		}
-
-		WorldGuardPlugin wg = getWorldGuard();
-		if (wg == null) {
-			return;
-		}
-		RegionManager rm = wg.getRegionManager(player.getWorld());
-		ApplicableRegionSet regions = rm.getApplicableRegions(block.getLocation());
-		if (regions.size() == 0) {
-			return;
-		}
-		List<ProtectedRegion> inheritance = new LinkedList<ProtectedRegion>();
-		Iterator<ProtectedRegion> iterator = regions.iterator();
-		while (iterator.hasNext()) {
-			inheritance.add(iterator.next());
-		}
-		Collections.reverse(inheritance);
-		ProtectedRegion firstregion = inheritance.get(0);
-		if (!firstregion.getId().equalsIgnoreCase("Bakushinchi")) {
+		if (!Main.isBakushinchi(loc)) {
 			return;
 		}
 
@@ -148,15 +120,5 @@ public class Event_AntiBlockUnderDestroy implements Listener {
 		}
 		destroyAlerted.put(uuid, true);
 		event.setCancelled(true);
-	}
-
-	private WorldGuardPlugin getWorldGuard() {
-		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
-
-		if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-			return null;
-		}
-
-		return (WorldGuardPlugin) plugin;
 	}
 }
