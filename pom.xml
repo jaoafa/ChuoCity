@@ -102,9 +102,9 @@
 		</dependency>
 		<!-- LuckPerms -->
 		<dependency>
-			<groupId>me.lucko.luckperms</groupId>
-			<artifactId>luckperms-api</artifactId>
-			<version>4.0</version>
+			<groupId>net.luckperms</groupId>
+			<artifactId>api</artifactId>
+			<version>5.1</version>
 		</dependency>
 		<!-- WorldGuard -->
 		<dependency>
