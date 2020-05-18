@@ -16,6 +16,7 @@ import com.jaoafa.Bakushinchi.Event.Event_AntiClockRedstone;
 import com.jaoafa.Bakushinchi.Event.Event_AntiSnowMan;
 import com.jaoafa.Bakushinchi.Event.Event_BakushinchiRailChecker;
 import com.jaoafa.Bakushinchi.Event.Event_BakushinchiY50Destroy;
+import com.jaoafa.Bakushinchi.Event.Event_ChatBakushinchi;
 import com.jaoafa.Bakushinchi.Event.Event_PlaceTNT;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
@@ -41,6 +42,7 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
 		getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
 		getServer().getPluginManager().registerEvents(new Event_AntiSnowMan(), this);
+		getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
 	}
 
 	public static JavaPlugin getJavaPlugin() {
