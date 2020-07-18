@@ -85,6 +85,10 @@
 			<id>TheCentralRepository</id>
 			<url>https://repo1.maven.org/maven2/</url>
 		</repository>
+	    <repository>
+	        <id>sk89q-repo</id>
+	        <url>https://maven.enginehub.org/repo/</url>
+	    </repository>
 	</repositories>
 
 	<dependencies>
@@ -109,18 +113,16 @@
 		<!-- WorldGuard -->
 		<dependency>
 			<groupId>com.sk89q.worldguard</groupId>
-			<artifactId>worldguard</artifactId>
-			<version>6.2.1;84bc322</version>
-			<systemPath>${basedir}/lib/worldguard-6.2.1.jar</systemPath>
-			<scope>system</scope>
+			<artifactId>worldguard-legacy</artifactId>
+			<version>6.2</version>
+        	<scope>provided</scope>
 		</dependency>
 		<!-- WorldEdit -->
 		<dependency>
 			<groupId>com.sk89q.worldedit</groupId>
-			<artifactId>worldedit</artifactId>
-			<version>6.1.8-SNAPSHOT;cd4729f</version>
-			<systemPath>${basedir}/lib/worldedit-bukkit-6.1.7.3.jar</systemPath>
-			<scope>system</scope>
+			<artifactId>worldedit-bukkit</artifactId>
+			<version>6.1.4-SNAPSHOT</version>
+            <scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
