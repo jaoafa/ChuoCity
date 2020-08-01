@@ -5,19 +5,14 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.jaoafa.Bakushinchi.Event.*;
+import com.sk89q.worldedit.WorldEdit;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.jaoafa.Bakushinchi.Command.Cmd_Bakushinchi;
-import com.jaoafa.Bakushinchi.Event.Event_AntiBlockUnderDestroy;
-import com.jaoafa.Bakushinchi.Event.Event_AntiClockRedstone;
-import com.jaoafa.Bakushinchi.Event.Event_AntiSnowMan;
-import com.jaoafa.Bakushinchi.Event.Event_BakushinchiRailChecker;
-import com.jaoafa.Bakushinchi.Event.Event_BakushinchiY50Destroy;
-import com.jaoafa.Bakushinchi.Event.Event_ChatBakushinchi;
-import com.jaoafa.Bakushinchi.Event.Event_PlaceTNT;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
@@ -43,6 +38,9 @@ public class Main extends JavaPlugin {
 		getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
 		getServer().getPluginManager().registerEvents(new Event_AntiSnowMan(), this);
 		getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
+
+
+		WorldEdit.getInstance().getEventBus().register(new Event_WGProtection());
 	}
 
 	public static JavaPlugin getJavaPlugin() {
@@ -71,26 +69,43 @@ public class Main extends JavaPlugin {
 		if (regions.size() == 0) {
 			return false;
 		}
-		List<ProtectedRegion> inheritance = new LinkedList<ProtectedRegion>();
-		Iterator<ProtectedRegion> iterator = regions.iterator();
-		while (iterator.hasNext()) {
-			inheritance.add(iterator.next());
+		List<ProtectedRegion> inheritance = new LinkedList<>();
+		for (ProtectedRegion region : regions) {
+			inheritance.add(region);
 		}
 		Collections.reverse(inheritance);
 		ProtectedRegion firstregion = inheritance.get(0);
-		if (!firstregion.getId().equalsIgnoreCase("Bakushinchi")) {
-			return false;
+		return firstregion.getId().equalsIgnoreCase("Bakushinchi");
+	}
+
+	public static ProtectedRegion getTopRegion(Location loc) {
+		if (!loc.getWorld().getName().equalsIgnoreCase("Jao_Afa")) {
+			return null; // Jao_Afa以外では適用しない
 		}
-		return true;
+
+		WorldGuardPlugin wg = getWorldGuard();
+		if (wg == null) {
+			return null;
+		}
+		RegionManager rm = wg.getRegionManager(loc.getWorld());
+		ApplicableRegionSet regions = rm.getApplicableRegions(loc);
+		if (regions.size() == 0) {
+			return null;
+		}
+		List<ProtectedRegion> inheritance = new LinkedList<>();
+		for (ProtectedRegion region : regions) {
+			inheritance.add(region);
+		}
+		return inheritance.get(0);
 	}
 
 	private static WorldGuardPlugin getWorldGuard() {
 		Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
 
-		if (plugin == null || !(plugin instanceof WorldGuardPlugin)) {
-			return null;
+		if (plugin instanceof WorldGuardPlugin) {
+			return (WorldGuardPlugin) plugin;
 		}
+		return null;
 
-		return (WorldGuardPlugin) plugin;
 	}
 }
