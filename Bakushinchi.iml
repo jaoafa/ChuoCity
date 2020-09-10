@@ -33,14 +33,5 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.thoughtworks.paranamer:paranamer:2.6" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sk89q.lib:jlibnoise:1.0.0" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: com.sk89q:jchronic:0.2.4a" level="project" />
-    <orderEntry type="module-library">
-      <library name="Maven: com.sk89q.worldedit:FastAsyncWorldEdit:18.11.21">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/FastAsyncWorldEdit.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>

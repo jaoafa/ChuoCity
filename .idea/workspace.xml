@@ -23,40 +23,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="643beffe-3f5f-48e2-92fc-38f8ac8453f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_findbugs_jsr305_1_3_9.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_guava_guava_21_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_googlecode_json_simple_json_simple_1_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_dummypermscompat_1_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_jchronic_0_2_4a.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_lib_jlibnoise_1_0_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_worldedit_worldedit_bukkit_6_1_4_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_worldedit_worldedit_core_6_1_4_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sk89q_worldguard_worldguard_legacy_6_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_thoughtworks_paranamer_paranamer_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__de_schlichtherle_truezip_6_8_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_luckperms_api_5_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_md_5_bungeecord_chat_1_12_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bukkit_bukkit_1_12_2_R0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_spigotmc_spigot_api_1_12_2_R0_1_SNAPSHOT.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__rhino_js_1_7R2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Bakushinchi.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_WGProtection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/plugin.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/plugin.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bakushinchi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Bakushinchi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_WGProtection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_WGProtection.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,17 +69,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Bakushinchi [install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -145,8 +104,17 @@
       <option name="presentableId" value="Default" />
       <updated>1596115869219</updated>
       <workItem from="1596115870356" duration="24000" />
-      <workItem from="1596268743160" duration="6072000" />
+      <workItem from="1596268743160" duration="6715000" />
+      <workItem from="1599738818653" duration="323000" />
     </task>
+    <task id="LOCAL-00001" summary="add: とりあえず無理やり有効保護外を編集できないように">
+      <created>1596275031304</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596275031304</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +130,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -177,25 +146,33 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="740" y="280" key="FileChooserDialogImpl/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596115885596" />
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1596274769124">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1596276405923">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596274769124" />
-    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1596274769123">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596276405923" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1596276405922">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596274769123" />
-    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1596274769123">
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596276405922" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1596276405922">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596274769123" />
-    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1596274769123">
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596276405922" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1596276405922">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596274769123" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596276405922" />
     <state x="468" y="170" key="SettingsEditor" timestamp="1596269682781">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="468" y="170" key="SettingsEditor/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596269682781" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1596275035256">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1596275035256" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599739088303">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1599739088303" />
   </component>
 </project>

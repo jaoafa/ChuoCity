@@ -11,10 +11,16 @@ import com.sk89q.worldedit.extent.AbstractDelegateExtent;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 
-public class Event_WGProtection {
+public class Event_WGProtection implements Listener {
     @Subscribe
     public void onWEEdit(EditSessionEvent event) {
         if (event.getStage() == EditSession.Stage.BEFORE_REORDER) {
@@ -55,5 +61,55 @@ public class Event_WGProtection {
             }
         });
 
+    }
+    @EventHandler
+    public void OnBlockPlace(BlockPlaceEvent event) {
+        Player player = event.getPlayer();
+        Location loc = event.getBlock().getLocation();
+
+        if (!Main.isBakushinchi(loc)) {
+            return;
+        }
+        ProtectedRegion region = Main.getTopRegion(loc);
+        if(region == null){
+            return;
+        }
+        if (region.getId().equalsIgnoreCase("Bakushinchi")) {
+            return;
+        }
+        if (region.getOwners().contains(player.getUniqueId())) {
+            return;
+        }
+        if (region.getMembers().contains(player.getUniqueId())) {
+            return;
+        }
+
+        event.setCancelled(true);
+        player.sendMessage("[WGProtection] " + ChatColor.RED + "あなたがブロックを設置しようとした場所は保護されているため編集できません。他の開いている土地を探しましょう！");
+    }
+    @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
+    public void onBlockBreak(BlockBreakEvent event) {
+        Player player = event.getPlayer();
+        Location loc = event.getBlock().getLocation();
+
+        if (!Main.isBakushinchi(loc)) {
+            return;
+        }
+        ProtectedRegion region = Main.getTopRegion(loc);
+        if(region == null){
+            return;
+        }
+        if (region.getId().equalsIgnoreCase("Bakushinchi")) {
+            return;
+        }
+        if (region.getOwners().contains(player.getUniqueId())) {
+            return;
+        }
+        if (region.getMembers().contains(player.getUniqueId())) {
+            return;
+        }
+
+        event.setCancelled(true);
+        player.sendMessage("[WGProtection] " + ChatColor.RED + "あなたがブロックを破壊しようとした場所は保護されているため編集できません。他の開いている土地を探しましょう！");
     }
 }
