@@ -62,6 +62,7 @@ public class Event_WGProtection implements Listener {
         });
 
     }
+
     @EventHandler
     public void OnBlockPlace(BlockPlaceEvent event) {
         Player player = event.getPlayer();
@@ -71,7 +72,7 @@ public class Event_WGProtection implements Listener {
             return;
         }
         ProtectedRegion region = Main.getTopRegion(loc);
-        if(region == null){
+        if (region == null) {
             return;
         }
         if (region.getId().equalsIgnoreCase("Bakushinchi")) {
@@ -87,6 +88,7 @@ public class Event_WGProtection implements Listener {
         event.setCancelled(true);
         player.sendMessage("[WGProtection] " + ChatColor.RED + "あなたがブロックを設置しようとした場所は保護されているため編集できません。他の開いている土地を探しましょう！");
     }
+
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onBlockBreak(BlockBreakEvent event) {
         Player player = event.getPlayer();
@@ -96,7 +98,7 @@ public class Event_WGProtection implements Listener {
             return;
         }
         ProtectedRegion region = Main.getTopRegion(loc);
-        if(region == null){
+        if (region == null) {
             return;
         }
         if (region.getId().equalsIgnoreCase("Bakushinchi")) {
