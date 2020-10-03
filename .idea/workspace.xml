@@ -23,8 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="643beffe-3f5f-48e2-92fc-38f8ac8453f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiDiffusionWaterLava.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,17 +67,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Bakushinchi [install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -117,7 +106,8 @@
       <workItem from="1599738818653" duration="495000" />
       <workItem from="1601327842907" duration="2043000" />
       <workItem from="1601330281910" duration="7000" />
-      <workItem from="1601686708750" duration="1383000" />
+      <workItem from="1601686708750" duration="2136000" />
+      <workItem from="1601703689655" duration="14000" />
     </task>
     <task id="LOCAL-00001" summary="add: とりあえず無理やり有効保護外を編集できないように">
       <created>1596275031304</created>
@@ -140,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601329166071</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add: 水・溶岩が拡散しないように">
+      <created>1601688178146</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1601688178146</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,7 +161,8 @@
     <MESSAGE value="add: とりあえず無理やり有効保護外を編集できないように" />
     <MESSAGE value="change: 爆新地内の保護範囲で設置破壊を一切禁止するように" />
     <MESSAGE value="fix/change: IllegalArgumentException, refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix/change: IllegalArgumentException, refactoring" />
+    <MESSAGE value="add: 水・溶岩が拡散しないように" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: 水・溶岩が拡散しないように" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
@@ -198,10 +196,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="468" y="170" key="SettingsEditor/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1601329060543" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1601329167409">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1601688179582">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1601329167409" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050/1920.48.1280.994@0.0.1920.1050" timestamp="1601688179582" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1599739088303">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

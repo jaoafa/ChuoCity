@@ -103,6 +103,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiSnowMan(), this);
         getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
+        getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
 
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGProtection());
