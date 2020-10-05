@@ -24,7 +24,7 @@ public class Event_AntiDiffusionWaterLava implements Listener {
             return;
         }
 
-        newLoc.getWorld().spawnParticle(Particle.SPELL_WITCH, loc, 100, 0.5, 0, 0.5);
+        newLoc.getWorld().spawnParticle(Particle.SPELL_WITCH, newLoc.add(0.5, 0, 0.5), 100, 0.5, 0, 0.5);
         event.setCancelled(true);
     }
 }
