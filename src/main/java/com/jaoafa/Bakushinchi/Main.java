@@ -101,10 +101,9 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_BakushinchiY50Destroy(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
         getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiSnowMan(), this);
+        getServer().getPluginManager().registerEvents(new Event_AntiCreatureSpawn(), this);
         getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
-
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGProtection());
     }
