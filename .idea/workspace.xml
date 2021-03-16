@@ -23,10 +23,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="643beffe-3f5f-48e2-92fc-38f8ac8453f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiTooManyArmorStand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiInteract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiInteract.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,19 +65,6 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Bakushinchi [install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -125,7 +110,8 @@
       <workItem from="1615639613330" duration="865000" />
       <workItem from="1615640593534" duration="195000" />
       <workItem from="1615848790075" duration="8012000" />
-      <workItem from="1615879327452" duration="1735000" />
+      <workItem from="1615879327452" duration="2454000" />
+      <workItem from="1615892334946" duration="48000" />
     </task>
     <task id="LOCAL-00001" summary="add: とりあえず無理やり有効保護外を編集できないように">
       <created>1596275031304</created>
@@ -190,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615857389452</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add: 5ブロック以内における5つ以上のアーマースタンド設置を制限">
+      <created>1615881197548</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615881197548</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,7 +213,8 @@
     <MESSAGE value="add: ボート等の設置制限追加" />
     <MESSAGE value="fix: Event_AntiInteractのイベント登録忘れ" />
     <MESSAGE value="fix: null" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: null" />
+    <MESSAGE value="add: 5ブロック以内における5つ以上のアーマースタンド設置を制限" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: 5ブロック以内における5つ以上のアーマースタンド設置を制限" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />

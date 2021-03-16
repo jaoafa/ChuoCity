@@ -96,7 +96,7 @@ public class Event_AntiInteract implements Listener {
     public void OnInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack hand = event.getItem();
-        if (hand == null) {
+        if (hand == null || event.getClickedBlock() == null) {
             return;
         }
         Action action = event.getAction();
