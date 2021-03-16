@@ -95,6 +95,9 @@ public class Event_AntiInteract implements Listener {
     public void OnInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         ItemStack hand = event.getItem();
+        if (hand == null) {
+            return;
+        }
         Action action = event.getAction();
 
         String group = PermissionsManager.getPermissionMainGroup(player);
