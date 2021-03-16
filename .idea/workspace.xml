@@ -23,10 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="643beffe-3f5f-48e2-92fc-38f8ac8453f4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiCreatureSpawn.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiInteract.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Event/Event_AntiSnowMan.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jaoafa/Bakushinchi/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -123,7 +120,7 @@
       <workItem from="1601864455363" duration="1796000" />
       <workItem from="1615639613330" duration="865000" />
       <workItem from="1615640593534" duration="195000" />
-      <workItem from="1615848790075" duration="5171000" />
+      <workItem from="1615848790075" duration="6225000" />
     </task>
     <task id="LOCAL-00001" summary="add: とりあえず無理やり有効保護外を編集できないように">
       <created>1596275031304</created>
@@ -167,7 +164,14 @@
       <option name="project" value="LOCAL" />
       <updated>1601864553254</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add: ボート等の設置制限追加">
+      <created>1615856345403</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615856345403</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -194,7 +198,8 @@
     <MESSAGE value="add: 水・溶岩が拡散しないように" />
     <MESSAGE value="fix: Event_AntiDiffusionWaterLava" />
     <MESSAGE value="fix: +0.5" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: +0.5" />
+    <MESSAGE value="add: ボート等の設置制限追加" />
+    <option name="LAST_COMMIT_MESSAGE" value="add: ボート等の設置制限追加" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
