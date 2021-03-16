@@ -105,6 +105,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiInteract(), this);
+        getServer().getPluginManager().registerEvents(new Event_AntiTooManyArmorStand(), this);
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGProtection());
     }

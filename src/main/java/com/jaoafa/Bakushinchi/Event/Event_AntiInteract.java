@@ -1,5 +1,6 @@
 package com.jaoafa.Bakushinchi.Event;
 
+import com.jaoafa.Bakushinchi.Main;
 import com.jaoafa.Bakushinchi.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -99,6 +100,10 @@ public class Event_AntiInteract implements Listener {
             return;
         }
         Action action = event.getAction();
+
+        if (!Main.isBakushinchi(event.getClickedBlock().getLocation())) {
+            return;
+        }
 
         String group = PermissionsManager.getPermissionMainGroup(player);
         for (ItemInteract itemInteract : itemInteracts) {
