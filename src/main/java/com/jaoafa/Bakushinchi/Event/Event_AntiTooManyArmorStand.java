@@ -27,7 +27,7 @@ public class Event_AntiTooManyArmorStand implements Listener {
         }
 
         List<Entity> entitys = entity.getNearbyEntities(5, 5, 5);
-        if (entitys.stream().filter(e -> e.getType() == EntityType.ARMOR_STAND).count() >= 5) {
+        if (entitys.stream().filter(e -> e.getType() == EntityType.ARMOR_STAND).count() <= 5) {
             return;
         }
         event.setCancelled(true);
