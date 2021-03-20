@@ -20,16 +20,16 @@ public class Event_AntiCreatureSpawn implements Listener {
 
     static {
         spawnEntityTypes.add(new SpawnEntityType(
-                EntityType.IRON_GOLEM,
-                CreatureSpawnEvent.SpawnReason.BUILD_IRONGOLEM,
-                "アイアンゴーレム",
-                "IronGolem")
+            EntityType.IRON_GOLEM,
+            CreatureSpawnEvent.SpawnReason.BUILD_IRONGOLEM,
+            "アイアンゴーレム",
+            "IronGolem")
         );
         spawnEntityTypes.add(new SpawnEntityType(
-                EntityType.SNOWMAN,
-                CreatureSpawnEvent.SpawnReason.BUILD_SNOWMAN,
-                "スノウゴーレム",
-                "SnowMan")
+            EntityType.SNOWMAN,
+            CreatureSpawnEvent.SpawnReason.BUILD_SNOWMAN,
+            "スノウゴーレム",
+            "SnowMan")
         );
     }
 
@@ -55,12 +55,21 @@ public class Event_AntiCreatureSpawn implements Listener {
                 return;
             }
             min_player.sendMessage(String.format("[BAKUSHINCHI] %s負荷対策の為に爆新地内での%sの召喚を禁止しています。ご協力をお願いします。",
-                    ChatColor.GREEN, spawnEntityType.entityName));
+                ChatColor.GREEN, spawnEntityType.entityName));
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 String group = PermissionsManager.getPermissionMainGroup(p);
                 if (group.equalsIgnoreCase("Admin") || group.equalsIgnoreCase("Moderator")) {
-                    p.sendMessage(String.format("[%sNo%s%s] %s%sの近くで%sが発生しましたが、発生を規制されました。",
-                            ChatColor.RED, spawnEntityType.entityNameEN, ChatColor.WHITE, ChatColor.GREEN, min_player.getName(), spawnEntityType.entityName));
+                    p.sendMessage(String.format("[%sNo%s%s] %s%sの近くで%sが発生しましたが、発生を規制されました。(%s %f %f %f)",
+                        ChatColor.RED,
+                        spawnEntityType.entityNameEN,
+                        ChatColor.WHITE,
+                        ChatColor.GREEN,
+                        min_player.getName(),
+                        spawnEntityType.entityName,
+                        location.getWorld().getName(),
+                        location.getX(),
+                        location.getY(),
+                        location.getZ()));
                 }
             }
         }
