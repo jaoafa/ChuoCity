@@ -44,7 +44,7 @@ public class Event_AntiCreatureSpawn implements Listener {
             if (ent.getType() != spawnEntityType.entityType) {
                 continue;
             }
-            if (spawnEntityType.spawnReason == null && event.getSpawnReason() != spawnEntityType.spawnReason) {
+            if (spawnEntityType.spawnReason == null || event.getSpawnReason() != spawnEntityType.spawnReason) {
                 continue;
             }
             event.setCancelled(true);
