@@ -59,7 +59,7 @@ public class Event_AntiCreatureSpawn implements Listener {
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 String group = PermissionsManager.getPermissionMainGroup(p);
                 if (group.equalsIgnoreCase("Admin") || group.equalsIgnoreCase("Moderator")) {
-                    p.sendMessage(String.format("[%sNo%s%s] %s%sの近くで%sが発生しましたが、発生を規制されました。(%s %f %f %f)",
+                    p.sendMessage(String.format("[%sNo%s%s] %s%sの近くで%sが発生しましたが、発生を規制されました。(%s %d %d %d)",
                         ChatColor.RED,
                         spawnEntityType.entityNameEN,
                         ChatColor.WHITE,
@@ -67,9 +67,9 @@ public class Event_AntiCreatureSpawn implements Listener {
                         min_player.getName(),
                         spawnEntityType.entityName,
                         location.getWorld().getName(),
-                        location.getX(),
-                        location.getY(),
-                        location.getZ()));
+                        location.getBlockX(),
+                        location.getBlockY(),
+                        location.getBlockZ()));
                 }
             }
         }
