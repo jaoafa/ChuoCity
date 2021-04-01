@@ -3,10 +3,14 @@ package com.jaoafa.Bakushinchi;
 import com.jaoafa.Bakushinchi.Command.Cmd_Bakushinchi;
 import com.jaoafa.Bakushinchi.Event.*;
 import com.sk89q.worldedit.WorldEdit;
+import com.sk89q.worldedit.math.BlockVector3;
+import com.sk89q.worldedit.world.World;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
 import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.plugin.Plugin;
@@ -41,8 +45,13 @@ public class Main extends JavaPlugin {
         if (wg == null) {
             return false;
         }
-        RegionManager rm = wg.getRegionManager(loc.getWorld());
-        ApplicableRegionSet regions = rm.getApplicableRegions(loc);
+        RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+        World world = WorldGuard.getInstance().getPlatform().getMatcher().getWorldByName(loc.getWorld().getName());
+        RegionManager rm = container.get(world);
+        if (rm == null) {
+            return false;
+        }
+        ApplicableRegionSet regions = rm.getApplicableRegions(BlockVector3.at(loc.getX(), loc.getY(), loc.getZ()));
         if (regions.size() == 0) {
             return false;
         }
@@ -64,8 +73,13 @@ public class Main extends JavaPlugin {
         if (wg == null) {
             return null;
         }
-        RegionManager rm = wg.getRegionManager(loc.getWorld());
-        ApplicableRegionSet regions = rm.getApplicableRegions(loc);
+        RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+        World world = WorldGuard.getInstance().getPlatform().getMatcher().getWorldByName(loc.getWorld().getName());
+        RegionManager rm = container.get(world);
+        if (rm == null) {
+            return null;
+        }
+        ApplicableRegionSet regions = rm.getApplicableRegions(BlockVector3.at(loc.getX(), loc.getY(), loc.getZ()));
         if (regions.size() == 0) {
             return null;
         }

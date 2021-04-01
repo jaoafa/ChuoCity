@@ -1,12 +1,13 @@
 package com.jaoafa.Bakushinchi.Command;
 
-import com.sk89q.worldedit.BlockVector;
 import com.sk89q.worldedit.IncompleteRegionException;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
-import com.sk89q.worldedit.bukkit.selections.Selection;
+import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.regions.CuboidRegion;
 import com.sk89q.worldedit.regions.Polygonal2DRegion;
 import com.sk89q.worldedit.regions.Region;
+import com.sk89q.worldedit.world.World;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
 import com.sk89q.worldguard.domains.DefaultDomain;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
@@ -14,6 +15,7 @@ import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedCuboidRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedPolygonalRegion;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
+import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -39,8 +41,8 @@ public class Cmd_Bakushinchi implements CommandExecutor {
             int maxY = polySel.getMaximumPoint().getBlockY();
             return new ProtectedPolygonalRegion(id, polySel.getPoints(), minY, maxY);
         } else if (region instanceof CuboidRegion) {
-            BlockVector min = region.getMinimumPoint().toBlockVector();
-            BlockVector max = region.getMaximumPoint().toBlockVector();
+            BlockVector3 min = region.getMinimumPoint();
+            BlockVector3 max = region.getMaximumPoint();
             return new ProtectedCuboidRegion(id, min, max);
         } else {
             return null;
@@ -71,12 +73,8 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                 }
 
                 try {
-                    Selection selection = we.getSelection(player);
-                    if (selection == null) {
-                        player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "範囲が選択されていません。");
-                        return true;
-                    }
-                    Region region = selection.getRegionSelector().getRegion();
+                    World selectionWorld = we.getSession(player).getSelectionWorld();
+                    Region region = we.getSession(player).getSelection(selectionWorld);
                     ProtectedRegion protectedregion;
                     try {
                         protectedregion = getProtectedRegion(region, id);
@@ -90,11 +88,17 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                         return true;
                     }
 
-                    RegionManager rm = wg.getRegionManager(player.getWorld());
+                    RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
+                    RegionManager rm = container.get(selectionWorld);
+                    if (rm == null) {
+                        player.sendMessage(
+                            "[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。ワールドの取得に失敗しました。");
+                        return true;
+                    }
 
                     if (rm.hasRegion(id)) {
                         player.sendMessage(
-                                "[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。指定された範囲名は既に使用されています。");
+                            "[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。指定された範囲名は既に使用されています。");
                         return true;
                     }
 
@@ -144,15 +148,9 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                         return true;
                     }
 
-                    RegionManager regionManager = wg.getRegionContainer().get(Bukkit.getWorld(region.getWorld().getName()));
-
-                    if (regionManager == null) {
-                        player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。regionManager == null.");
-                        return true;
-                    }
-                    regionManager.addRegion(protectedregion);
+                    rm.addRegion(protectedregion);
                     player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "次の名前で保護を設定しました: " + protectedregion.getId() + "\n"
-                            + "保護設定編集には/rgコマンドをご利用ください。");
+                        + "保護設定編集には/rgコマンドをご利用ください。");
                     if (!((protectedregion.getMinimumPoint().getBlockY() == 0
                             && protectedregion.getMaximumPoint().getBlockY() == 255)
                             || (protectedregion.getMinimumPoint().getBlockY() == 255
@@ -164,11 +162,7 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                 } catch (IncompleteRegionException e) {
                     player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "範囲が選択されていません。");
                     return true;
-                } /* catch (CircularInheritanceException e) {
-					player.sendMessage(
-							"[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。" + e.getMessage());
-					return true;
-					}*/
+                }
             }
         }
         player.sendMessage(
