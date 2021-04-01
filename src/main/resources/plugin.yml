@@ -4,6 +4,7 @@ version: 2020.08.01_18.39
 description: Bakushinchi
 author: mine_book000
 database: true
+api-version: 1.16
 softdepend:
   - WorldEdit
   - WorldGuard

@@ -2,6 +2,9 @@ package com.jaoafa.Bakushinchi.Event;
 
 import com.jaoafa.Bakushinchi.Main;
 import com.jaoafa.Bakushinchi.PermissionsManager;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.NamedTextColor;
+import net.kyori.adventure.text.format.TextDecoration;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -72,21 +75,21 @@ public class Event_AntiClockRedstone implements Listener {
         rcs_count.remove(block.getLocation());
         redstoneclocks.remove(block.getLocation());
 
-        block.setType(Material.SIGN_POST);
+        block.setType(Material.OAK_SIGN);
         Sign sign = (Sign) block.getState();
-        sign.setLine(0, ChatColor.DARK_RED + "" + ChatColor.BOLD + "[AntiClock]");
-        sign.setLine(1, "早すぎるクロック");
-        sign.setLine(2, "回路の利用は");
-        sign.setLine(3, "避けてください。");
+        sign.line(0, Component.text("[AntiClock]", NamedTextColor.DARK_RED, TextDecoration.BOLD));
+        sign.line(1, Component.text("早すぎるクロック"));
+        sign.line(2, Component.text("回路の利用は"));
+        sign.line(3, Component.text("避けてください。"));
         sign.update();
         for (Player p : Bukkit.getOnlinePlayers()) {
             String _group = PermissionsManager.getPermissionMainGroup(p);
             if (_group.equalsIgnoreCase("Moderator") || _group.equalsIgnoreCase("Admin")) {
                 p.sendMessage("[AntiClock] " + ChatColor.RED + "爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
-                        + loc.getBlockZ() + "にあったクロック回路を停止しました。");
+                    + loc.getBlockZ() + "にあったクロック回路を停止しました。");
             }
             System.out.println("[AntiClock] 爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
-                    + loc.getBlockZ() + "にあったクロック回路を停止しました。");
+                + loc.getBlockZ() + "にあったクロック回路を停止しました。");
         }
     }
 }

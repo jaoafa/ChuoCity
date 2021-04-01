@@ -33,6 +33,9 @@ public class Event_WGProtection implements Listener {
         }
 
         Player player = Bukkit.getPlayer(actor.getUniqueId());
+        if (player == null) {
+            return;
+        }
         if (player.hasPermission("worldguard.region.bypass")) {
             return;
         }

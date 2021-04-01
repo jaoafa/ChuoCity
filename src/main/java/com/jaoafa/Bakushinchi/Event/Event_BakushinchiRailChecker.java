@@ -17,8 +17,8 @@ public class Event_BakushinchiRailChecker implements Listener {
             return;
         }
         Block block = event.getBlock();
-        if (block.getType() != Material.RAILS && block.getType() != Material.ACTIVATOR_RAIL
-                && block.getType() != Material.DETECTOR_RAIL && block.getType() != Material.POWERED_RAIL) {
+        if (block.getType() != Material.RAIL && block.getType() != Material.ACTIVATOR_RAIL
+            && block.getType() != Material.DETECTOR_RAIL && block.getType() != Material.POWERED_RAIL) {
             return;
         }
 

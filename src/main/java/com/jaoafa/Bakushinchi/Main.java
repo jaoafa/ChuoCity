@@ -15,6 +15,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
     private static Main Main = null;
@@ -95,7 +96,7 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         setMain(this);
 
-        getCommand("bakushinchi").setExecutor(new Cmd_Bakushinchi());
+        Objects.requireNonNull(getCommand("bakushinchi")).setExecutor(new Cmd_Bakushinchi());
         getServer().getPluginManager().registerEvents(new Event_BakushinchiRailChecker(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiBlockUnderDestroy(), this);
         getServer().getPluginManager().registerEvents(new Event_BakushinchiY50Destroy(), this);
