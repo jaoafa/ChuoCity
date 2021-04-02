@@ -65,7 +65,7 @@ public class Event_AntiInteract implements Listener {
                 continue;
             }
 
-            if (itemInteract.materials.contains(hand.getType())) {
+            if (!itemInteract.materials.contains(hand.getType())) {
                 continue;
             }
             if (Arrays.stream(itemInteract.actions).noneMatch(a -> a == action)) {
