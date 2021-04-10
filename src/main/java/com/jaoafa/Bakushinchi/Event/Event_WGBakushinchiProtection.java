@@ -20,7 +20,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-public class Event_WGProtection implements Listener {
+public class Event_WGBakushinchiProtection implements Listener {
     @Subscribe
     public void onWEEdit(EditSessionEvent event) {
         if (event.getStage() == EditSession.Stage.BEFORE_REORDER) {

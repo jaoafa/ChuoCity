@@ -123,6 +123,7 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_AntiTooManyArmorStand(), this);
         getServer().getPluginManager().registerEvents(new Event_RegionCommand(), this);
 
-        WorldEdit.getInstance().getEventBus().register(new Event_WGProtection());
+        WorldEdit.getInstance().getEventBus().register(new Event_WGBakushinchiProtection());
+        WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
     }
 }
