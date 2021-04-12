@@ -2,6 +2,7 @@ package com.jaoafa.Bakushinchi;
 
 import com.jaoafa.Bakushinchi.Command.Cmd_Bakushinchi;
 import com.jaoafa.Bakushinchi.Event.*;
+import com.jaoafa.Bakushinchi.Tasks.Task_NewStep;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
@@ -125,5 +126,7 @@ public class Main extends JavaPlugin {
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGBakushinchiProtection());
         WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
+
+        new Task_NewStep().runTaskTimerAsynchronously(this, 0L, 1200L); // per 1 minute
     }
 }
