@@ -1,5 +1,8 @@
 package com.jaoafa.Bakushinchi.Command;
 
+import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.Bakushinchi.Tasks.Task_BakushinchiFlat;
 import com.sk89q.worldedit.IncompleteRegionException;
 import com.sk89q.worldedit.bukkit.WorldEditPlugin;
 import com.sk89q.worldedit.math.BlockVector3;
@@ -128,14 +131,14 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                     if (!firstregion.getId().equalsIgnoreCase("Bakushinchi")) {
                         // 爆新地じゃない
                         player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。このコマンドは爆新地内でのみ使用できます。("
-                                + firstregion.getId() + ")");
+                            + firstregion.getId() + ")");
                         return true;
                     }
 
                     if (!firstregion.getId().equals(lastregion.getId())) {
                         // ラストが爆新地じゃない
                         player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。次の範囲と被っています: "
-                                + lastregion.getId());
+                            + lastregion.getId());
                         return true;
                     }
 
@@ -152,12 +155,38 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                     player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "次の名前で保護を設定しました: " + protectedregion.getId() + "\n"
                         + "保護設定編集には/rgコマンドをご利用ください。");
                     if (!((protectedregion.getMinimumPoint().getBlockY() == 0
-                            && protectedregion.getMaximumPoint().getBlockY() == 255)
-                            || (protectedregion.getMinimumPoint().getBlockY() == 255
-                            && protectedregion.getMaximumPoint().getBlockY() == 0))) {
+                        && protectedregion.getMaximumPoint().getBlockY() == 255)
+                        || (protectedregion.getMinimumPoint().getBlockY() == 255
+                        && protectedregion.getMaximumPoint().getBlockY() == 0))) {
                         player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN
-                                + "保護範囲のY値が0～255ではありません。//expand vertを実行して0～255を選択してから保護することをお勧めします。");
+                            + "保護範囲のY値が0～255ではありません。//expand vertを実行して0～255を選択してから保護することをお勧めします。");
                     }
+                    return true;
+                } catch (IncompleteRegionException e) {
+                    player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "範囲が選択されていません。");
+                    return true;
+                }
+            }
+        } else if (args.length == 1) {
+            if (args[0].equalsIgnoreCase("flat")) {
+                String group = PermissionsManager.getPermissionMainGroup(player);
+                if (!group.equalsIgnoreCase("Admin") && !group.equalsIgnoreCase("Moderator")) {
+                    player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "あなたはこのコマンドを使用できません。");
+                    return true;
+                }
+
+                WorldEditPlugin we = getWorldEdit();
+
+                if (we == null) {
+                    player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "WorldEditが利用できません。何かしらの問題が発生している可能性があります。");
+                    return true;
+                }
+
+                try {
+                    World selectionWorld = we.getSession(player).getSelectionWorld();
+                    Region region = we.getSession(player).getSelection(selectionWorld);
+
+                    new Task_BakushinchiFlat(player, region, 0).runTaskLater(Main.getJavaPlugin(), 0L);
                     return true;
                 } catch (IncompleteRegionException e) {
                     player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "範囲が選択されていません。");
