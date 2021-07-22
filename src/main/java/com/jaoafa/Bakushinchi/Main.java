@@ -62,7 +62,7 @@ public class Main extends JavaPlugin {
         }
         Collections.reverse(inheritance);
         ProtectedRegion firstregion = inheritance.get(0);
-        return firstregion.getId().equalsIgnoreCase("Bakushinchi");
+        return firstregion.getId().length() == 14 && firstregion.getId().startsWith("bakushinchi_");
     }
 
     public static ProtectedRegion getTopRegion(Location loc) {
@@ -126,7 +126,6 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_Bamboo(), this);
         getServer().getPluginManager().registerEvents(new Event_Beehive(), this);
 
-        WorldEdit.getInstance().getEventBus().register(new Event_WGBakushinchiProtection());
         WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
 
         new Task_NewStep().runTaskTimerAsynchronously(this, 0L, 1200L); // per 1 minute

@@ -79,7 +79,7 @@ public class Event_WGNonProtection implements Listener {
         if (region == null) {
             return;
         }
-        if (region.getId().equalsIgnoreCase("Bakushinchi")) {
+        if (region.getId().length() == 14 && region.getId().startsWith("bakushinchi_")) {
             return;
         }
         if (region.getOwners().contains(player.getUniqueId())) {
