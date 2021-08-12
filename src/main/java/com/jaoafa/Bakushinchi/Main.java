@@ -62,7 +62,7 @@ public class Main extends JavaPlugin {
         }
         Collections.reverse(inheritance);
         ProtectedRegion firstregion = inheritance.get(0);
-        return firstregion.getId().length() == 14 && firstregion.getId().startsWith("bakushinchi_");
+        return firstregion.getId().startsWith("bakushinchi_");
     }
 
     public static ProtectedRegion getTopRegion(Location loc) {
