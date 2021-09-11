@@ -128,7 +128,7 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                     Collections.reverse(inheritance);
                     ProtectedRegion firstregion = inheritance.get(0);
 
-                    if (!firstregion.getId().equalsIgnoreCase("Bakushinchi")) {
+                    if (!firstregion.getId().startsWith("bakushinchi_")) {
                         // 爆新地じゃない
                         player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "指定された範囲を保護できません。このコマンドは爆新地内でのみ使用できます。("
                             + firstregion.getId() + ")");
