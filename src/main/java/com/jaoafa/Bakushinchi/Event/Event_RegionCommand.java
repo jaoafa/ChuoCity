@@ -15,6 +15,9 @@ public class Event_RegionCommand implements Listener {
             return;
         }
         String[] commands = event.getMessage().split(" ");
+        if (commands.length < 2) {
+            return;
+        }
         if (!commands[0].equalsIgnoreCase("/rg") &&
             !commands[0].equalsIgnoreCase("/region") &&
             !commands[0].equalsIgnoreCase("/regions")) {
