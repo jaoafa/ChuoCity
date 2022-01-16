@@ -18,9 +18,9 @@ import java.util.Map;
 import java.util.UUID;
 
 public class Event_AntiBlockUnderDestroy implements Listener {
-    public static Map<UUID, Location> destroy = new HashMap<>();
-    public static Map<UUID, Integer> destroycount = new HashMap<>();
-    public static Map<UUID, Boolean> destroyAlerted = new HashMap<>();
+    public static final Map<UUID, Location> destroy = new HashMap<>();
+    public static final Map<UUID, Integer> destroycount = new HashMap<>();
+    public static final Map<UUID, Boolean> destroyAlerted = new HashMap<>();
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onAntiBlockUnderDestroy(BlockBreakEvent event) {
@@ -109,12 +109,12 @@ public class Event_AntiBlockUnderDestroy implements Listener {
             for (Player p : Bukkit.getOnlinePlayers()) {
                 String _group = PermissionsManager.getPermissionMainGroup(p);
                 if (_group.equalsIgnoreCase("Regular") || _group.equalsIgnoreCase("Moderator")
-                        || _group.equalsIgnoreCase("Admin")) {
+                    || _group.equalsIgnoreCase("Admin")) {
                     p.sendMessage("[AntiBlockUnderDestroy] " + ChatColor.RED + "プレイヤー「" + player.getName() + "」が直下掘りを"
-                            + world.getName() + "の" + x + " " + y + " " + z + "で行いました。");
-                }
-                System.out.println("[AntiBlockUnderDestroy] プレイヤー「" + player.getName() + "」が直下掘りを"
                         + world.getName() + "の" + x + " " + y + " " + z + "で行いました。");
+                }
+                Main.getMain().getLogger().info("[AntiBlockUnderDestroy] プレイヤー「" + player.getName() + "」が直下掘りを"
+                    + world.getName() + "の" + x + " " + y + " " + z + "で行いました。");
             }
         }
         destroyAlerted.put(uuid, true);

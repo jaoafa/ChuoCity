@@ -91,7 +91,7 @@ public class PermissionsManager implements Listener {
      *
      * @param player プレイヤー
      * @return メイン権限グループ名
-     * @throws UnsupportedOperationException UnsupportedOperationException
+     * @throws UnsupportedOperationException 権限管理プラグインが見つからない場合
      * @throws IllegalArgumentException      IllegalArgumentException
      * @throws InternalError                 InternalError
      */

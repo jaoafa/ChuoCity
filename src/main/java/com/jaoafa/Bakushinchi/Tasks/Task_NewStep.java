@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public class Task_NewStep extends BukkitRunnable {
-    Set<UUID> got = new HashSet<>();
+    final Set<UUID> got = new HashSet<>();
 
     @Override
     public void run() {

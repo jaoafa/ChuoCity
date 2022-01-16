@@ -1,10 +1,10 @@
 name: Bakushinchi
 main: com.jaoafa.Bakushinchi.Main
-version: 2022.01.02_07.48
+version: 2022.01.17_02.09
 description: Bakushinchi
 author: mine_book000
 database: true
-api-version: 1.16
+api-version: 1.18.1
 softdepend:
   - WorldEdit
   - WorldGuard

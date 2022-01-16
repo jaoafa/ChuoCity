@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Event_AntiCreatureSpawn implements Listener {
-    static Set<SpawnEntityType> spawnEntityTypes = new HashSet<>();
+    static final Set<SpawnEntityType> spawnEntityTypes = new HashSet<>();
 
     static {
         spawnEntityTypes.add(new SpawnEntityType(
@@ -92,10 +92,10 @@ public class Event_AntiCreatureSpawn implements Listener {
     }
 
     static class SpawnEntityType {
-        EntityType entityType;
-        CreatureSpawnEvent.SpawnReason spawnReason;
-        String entityName;
-        String entityNameEN;
+        final EntityType entityType;
+        final CreatureSpawnEvent.SpawnReason spawnReason;
+        final String entityName;
+        final String entityNameEN;
 
         public SpawnEntityType(EntityType entityType, CreatureSpawnEvent.SpawnReason spawnReason, String entityName, String entityNameEN) {
             this.entityType = entityType;

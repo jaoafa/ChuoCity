@@ -20,8 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Event_AntiClockRedstone implements Listener {
-    Map<Location, Long> redstoneclocks = new HashMap<>();
-    Map<Location, Integer> rcs_count = new HashMap<>();
+    final Map<Location, Long> redstoneclocks = new HashMap<>();
+    final Map<Location, Integer> rcs_count = new HashMap<>();
 
     // ピストンは必要に応じて対応。
 
@@ -88,7 +88,7 @@ public class Event_AntiClockRedstone implements Listener {
                 p.sendMessage("[AntiClock] " + ChatColor.RED + "爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
                     + loc.getBlockZ() + "にあったクロック回路を停止しました。");
             }
-            System.out.println("[AntiClock] 爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
+            Main.getMain().getLogger().info("[AntiClock] 爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
                 + loc.getBlockZ() + "にあったクロック回路を停止しました。");
         }
     }

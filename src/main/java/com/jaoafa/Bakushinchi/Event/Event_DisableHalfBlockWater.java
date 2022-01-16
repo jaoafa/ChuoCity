@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Event_DisableHalfBlockWater implements Listener {
-    List<Material> materials = Arrays.asList(
+    final List<Material> materials = Arrays.asList(
         Material.OAK_SLAB,
         Material.SPRUCE_SLAB,
         Material.BIRCH_SLAB,

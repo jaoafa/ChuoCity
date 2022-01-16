@@ -15,7 +15,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.*;
 
 public class Event_AntiInteract implements Listener {
-    static Set<ItemInteract> itemInteracts = new HashSet<>();
+    static final Set<ItemInteract> itemInteracts = new HashSet<>();
 
     static {
         itemInteracts.add(new ItemInteract(
@@ -92,7 +92,7 @@ public class Event_AntiInteract implements Listener {
         MODERATOR("Moderator"),
         ADMIN("Admin");
 
-        String groupName;
+        final String groupName;
 
         PermGroup(String groupName) {
             this.groupName = groupName;
@@ -100,11 +100,11 @@ public class Event_AntiInteract implements Listener {
     }
 
     static class ItemInteract {
-        PermGroup[] group;
-        List<Material> materials;
-        String itemName;
-        String itemNameEN;
-        Action[] actions;
+        final PermGroup[] group;
+        final List<Material> materials;
+        final String itemName;
+        final String itemNameEN;
+        final Action[] actions;
 
         public ItemInteract(PermGroup[] group, List<Material> materials, String itemName, String itemNameEN, Action... actions) {
             this.group = group;

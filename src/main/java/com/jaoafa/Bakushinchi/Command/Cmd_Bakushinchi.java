@@ -38,8 +38,7 @@ public class Cmd_Bakushinchi implements CommandExecutor {
             throws IllegalArgumentException {
 
         // Detect the type of region from WorldEdit
-        if (region instanceof Polygonal2DRegion) {
-            Polygonal2DRegion polySel = (Polygonal2DRegion) region;
+        if (region instanceof Polygonal2DRegion polySel) {
             int minY = polySel.getMinimumPoint().getBlockY();
             int maxY = polySel.getMaximumPoint().getBlockY();
             return new ProtectedPolygonalRegion(id, polySel.getPoints(), minY, maxY);
@@ -54,11 +53,10 @@ public class Cmd_Bakushinchi implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String cmd, String[] args) {
-        if (!(sender instanceof Player)) {
+        if (!(sender instanceof Player player)) {
             sender.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "このコマンドはサーバ内から実行してください。");
             return true;
         }
-        Player player = (Player) sender;
 
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("claim")) {
