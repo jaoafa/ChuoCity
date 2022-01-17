@@ -1,6 +1,6 @@
 name: Bakushinchi
 main: com.jaoafa.Bakushinchi.Main
-version: 2022.01.17_02.09
+version: ${project.version}
 description: Bakushinchi
 author: mine_book000
 database: true
