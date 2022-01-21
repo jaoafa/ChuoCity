@@ -4,7 +4,7 @@ version: ${project.version}
 description: Bakushinchi
 author: mine_book000
 database: true
-api-version: 1.18.1
+api-version: 1.18
 softdepend:
   - WorldEdit
   - WorldGuard
