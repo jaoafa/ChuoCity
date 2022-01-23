@@ -152,12 +152,12 @@ public class Cmd_Bakushinchi implements CommandExecutor {
                     rm.addRegion(protectedregion);
                     player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN + "次の名前で保護を設定しました: " + protectedregion.getId() + "\n"
                         + "保護設定編集には/rgコマンドをご利用ください。");
-                    if (!((protectedregion.getMinimumPoint().getBlockY() == 0
-                        && protectedregion.getMaximumPoint().getBlockY() == 255)
-                        || (protectedregion.getMinimumPoint().getBlockY() == 255
-                        && protectedregion.getMaximumPoint().getBlockY() == 0))) {
+                    if (!((protectedregion.getMinimumPoint().getBlockY() == -64
+                        && protectedregion.getMaximumPoint().getBlockY() == 319)
+                        || (protectedregion.getMinimumPoint().getBlockY() == 319
+                        && protectedregion.getMaximumPoint().getBlockY() == -64))) {
                         player.sendMessage("[BAKUSHINCHI] " + ChatColor.GREEN
-                            + "保護範囲のY値が0～255ではありません。//expand vertを実行して0～255を選択してから保護することをお勧めします。");
+                            + "保護範囲のY値が0～255ではありません。//expand vertを実行して-64～319を選択してから保護することをお勧めします。");
                     }
                     return true;
                 } catch (IncompleteRegionException e) {
