@@ -1,7 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.CentralCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.CentralCity.Main;
+import com.jaoafa.CentralCity.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,7 +35,7 @@ public class Event_AntiCreatureSpawn implements Listener {
 
     @EventHandler
     public void CreatureSpawn(CreatureSpawnEvent event) {
-        if (!Main.isBakushinchi(event.getLocation())) {
+        if (!Main.isCentralCity(event.getLocation())) {
             return;
         }
         LivingEntity ent = event.getEntity();
@@ -54,7 +54,7 @@ public class Event_AntiCreatureSpawn implements Listener {
             if (min_player == null) {
                 return;
             }
-            min_player.sendMessage(String.format("[BAKUSHINCHI] %s負荷対策の為に爆新地内での%sの召喚を禁止しています。ご協力をお願いします。",
+            min_player.sendMessage(String.format("[CentralCity] %s負荷対策の為に中央市内での%sの召喚を禁止しています。ご協力をお願いします。",
                 ChatColor.GREEN, spawnEntityType.entityName));
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 String group = PermissionsManager.getPermissionMainGroup(p);

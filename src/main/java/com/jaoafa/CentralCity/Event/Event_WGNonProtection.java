@@ -1,6 +1,6 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.CentralCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.CentralCity.Main;
 import com.sk89q.worldedit.EditSession;
 import com.sk89q.worldedit.WorldEditException;
 import com.sk89q.worldedit.event.extent.EditSessionEvent;
@@ -42,7 +42,7 @@ public class Event_WGNonProtection implements Listener {
         }
         event.setExtent(new AbstractDelegateExtent(event.getExtent()) {
             private boolean canBuild(int x, int y, int z) {
-                if (Main.isBakushinchi(new Location(player.getWorld(), x, y, z))) {
+                if (Main.isCentralCity(new Location(player.getWorld(), x, y, z))) {
                     return true;
                 }
                 if (!player.getWorld().getName().equalsIgnoreCase("Jao_Afa")) {
@@ -72,14 +72,14 @@ public class Event_WGNonProtection implements Listener {
         Player player = event.getPlayer();
         Location loc = event.getBlock().getLocation();
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isCentralCity(loc)) {
             return;
         }
         ProtectedRegion region = Main.getTopRegion(loc);
         if (region == null) {
             return;
         }
-        if (region.getId().length() == 14 && region.getId().startsWith("bakushinchi_")) {
+        if (region.getId().length() == 14 && region.getId().startsWith("centralcity_")) {
             return;
         }
         if (region.getOwners().contains(player.getUniqueId())) {
@@ -98,14 +98,14 @@ public class Event_WGNonProtection implements Listener {
         Player player = event.getPlayer();
         Location loc = event.getBlock().getLocation();
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isCentralCity(loc)) {
             return;
         }
         ProtectedRegion region = Main.getTopRegion(loc);
         if (region == null) {
             return;
         }
-        if (region.getId().equalsIgnoreCase("Bakushinchi")) {
+        if (region.getId().equalsIgnoreCase("CentralCity")) {
             return;
         }
         if (region.getOwners().contains(player.getUniqueId())) {

@@ -1,6 +1,6 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.CentralCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.CentralCity.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -22,7 +22,7 @@ public class Event_AntiTooManyArmorStand implements Listener {
             return;
         }
 
-        if (!Main.isBakushinchi(event.getLocation())) {
+        if (!Main.isCentralCity(event.getLocation())) {
             return;
         }
 
@@ -36,7 +36,7 @@ public class Event_AntiTooManyArmorStand implements Listener {
             return;
         }
 
-        min_player.sendMessage("[BAKUSHINCHI] " + ChatColor.RED + "負荷対策の為に爆新地内での防具立ての数を制限しています。ご協力をお願いします。");
+        min_player.sendMessage("[CentralCity] " + ChatColor.RED + "負荷対策の為に中央市内での防具立ての数を制限しています。ご協力をお願いします。");
     }
 
     Player getNearestPlayer(Location location) {

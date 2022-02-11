@@ -1,6 +1,6 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.CentralCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.CentralCity.Main;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -11,7 +11,7 @@ public class Event_RegionCommand implements Listener {
     @EventHandler
     public void onRegionCommand(PlayerCommandPreprocessEvent event) {
         Player player = event.getPlayer();
-        if (!Main.isBakushinchi(player.getLocation())) {
+        if (!Main.isCentralCity(player.getLocation())) {
             return;
         }
         String[] commands = event.getMessage().split(" ");
@@ -27,6 +27,6 @@ public class Event_RegionCommand implements Listener {
             return;
         }
 
-        player.sendMessage("[Bakushinchi] " + ChatColor.RED + "爆新地内でエリア保護をするためには /bakushinchi claim を使う必要があります。");
+        player.sendMessage("[CentralCity] " + ChatColor.RED + "中央市内でエリア保護をするためには /centralcity claim を使う必要があります。");
     }
 }

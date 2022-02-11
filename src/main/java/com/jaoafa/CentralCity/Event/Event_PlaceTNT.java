@@ -1,8 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.CentralCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
-import io.papermc.paper.event.block.BlockPreDispenseEvent;
+import com.jaoafa.CentralCity.Main;
+import com.jaoafa.CentralCity.PermissionsManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -16,7 +15,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
 
 public class Event_PlaceTNT implements Listener {
     @EventHandler
@@ -28,7 +26,7 @@ public class Event_PlaceTNT implements Listener {
             return;
         }
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isCentralCity(loc)) {
             return;
         }
 
@@ -52,7 +50,7 @@ public class Event_PlaceTNT implements Listener {
             return;
         }
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isCentralCity(loc)) {
             return;
         }
         BlockFace face = ((Directional) event.getBlock().getBlockData()).getFacing();

@@ -1,11 +1,11 @@
-# Bakushinchi
+# CentralCity
 
 ![Java CI with Maven](https://github.com/jaoafa/Bakushinchi/workflows/Java%20CI%20with%20Maven/badge.svg)
 [![Support jdk](https://img.shields.io/badge/Support%20jdk-oraclejdk8-red.svg)](https://img.shields.io)
 [![Author](https://img.shields.io/badge/Author%20MinecraftID-mine__book000-orange.svg)](https://img.shields.io)
 [![License](https://img.shields.io/badge/license-jaoLicense-yellow.svg)](https://github.com/jaoafa/jao-Minecraft-Server/blob/master/jaoLICENSE.md)
 
-jao Minecraft Serverの初期スポーン地点である「爆新地」に関する機能が実装されたプラグインです。
+jao Minecraft Serverの初期スポーン地点である「中央市」に関する機能が実装されたプラグインです。
 
 ## ライセンス
 
