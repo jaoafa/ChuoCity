@@ -1,7 +1,7 @@
 @echo off
 
-set PLUGIN_NAME=Bakushinchi
-set JAR_FILE=Bakushinchi-jar-with-dependencies.jar
+set PLUGIN_NAME=ChuoCity
+set JAR_FILE=ChuoCity-jar-with-dependencies.jar
 
 if not exist server (
     mkdir server
@@ -24,7 +24,7 @@ if not exist server\mcrconapi-1.1.1.jar (
 )
 
 if not exist server/server.properties (
-    echo server.properties‚ª‘¶İ‚µ‚È‚¢‚½‚ßì¬‚µ‚Ü‚·B
+    echo server.propertiesï¿½ï¿½ï¿½ï¿½ï¿½İ‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ßì¬ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
     echo gamemode=creative> server/server.properties
     echo level-name=Jao_Afa> server/server.properties
     echo enforce-whitelist=true>> server/server.properties
@@ -39,12 +39,12 @@ if not exist server/server.properties (
     echo motd=%PLUGIN_NAME% Test Server>> server/server.properties
 )
 
-echo jarƒtƒ@ƒCƒ‹‚ğƒRƒs[‚µ‚Ü‚·B
+echo jarï¿½tï¿½@ï¿½Cï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½sï¿½[ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 copy target\%JAR_FILE% server\plugins\%JAR_FILE%
 if not %errorlevel% == 0 (
-    echo %JAR_FILE% ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½B
+    echo %JAR_FILE% ï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½B
 
-    echo 5•bŒã‚ÉƒNƒ[ƒY‚µ‚Ü‚·B
+    echo 5ï¿½bï¿½ï¿½ÉƒNï¿½ï¿½ï¿½[ï¿½Yï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
     timeout 5 /NOBREAK
     exit 1
 )
@@ -62,9 +62,9 @@ if %errorlevel% == 0 (
 )
 
 if %SELECTED_JAVA% == "notfound" (
-    echo Java‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñ‚Å‚µ‚½BƒCƒ“ƒXƒg[ƒ‹‚µ‚Ä‰º‚³‚¢B
+    echo Javaï¿½ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½Bï¿½Cï¿½ï¿½ï¿½Xï¿½gï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½Ä‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
 
-    echo 5•bŒã‚ÉƒNƒ[ƒY‚µ‚Ü‚·B
+    echo 5ï¿½bï¿½ï¿½ÉƒNï¿½ï¿½ï¿½[ï¿½Yï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
     timeout 5 /NOBREAK
     exit 1
 )
@@ -74,24 +74,24 @@ for /f tokens^=2-5^ delims^=-_^" %%j in ('%SELECTED_JAVA% -fullversion 2^>^&1') 
 echo Java Version: %JAVA_VERSION% (%JAVA_VERSION:~0,3%)
 
 if /i not "%JAVA_VERSION:~0,3%" == "17." (
-    echo PaperƒT[ƒo‚Ì‹N“®‚É‚ÍJava 17‚ª•K—v‚Å‚·B
+    echo Paperï¿½Tï¿½[ï¿½oï¿½Ì‹Nï¿½ï¿½ï¿½É‚ï¿½Java 17ï¿½ï¿½ï¿½Kï¿½vï¿½Å‚ï¿½ï¿½B
 
-    echo 5•bŒã‚ÉƒNƒ[ƒY‚µ‚Ü‚·B
+    echo 5ï¿½bï¿½ï¿½ÉƒNï¿½ï¿½ï¿½[ï¿½Yï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
     timeout 5 /NOBREAK
     exit 1
 )
 
-echo MinecraftƒT[ƒo‚É‘Î‚µ‚ÄƒŠƒ[ƒhƒRƒ}ƒ“ƒh‚ğÀs‚µ‚Ü‚·B
+echo Minecraftï¿½Tï¿½[ï¿½oï¿½É‘Î‚ï¿½ï¿½Äƒï¿½ï¿½ï¿½ï¿½[ï¿½hï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 %SELECTED_JAVA% -jar server\mcrconapi-1.1.1.jar -a localhost -l rconpassword -n -c "rl confirm"
 
 if not %errorlevel% == 0 (
-    echo MinecraftƒT[ƒo‚ª‹N“®‚µ‚Ä‚¢‚È‚¢‚½‚ßA‹N“®‚µ‚Ü‚·B
+    echo Minecraftï¿½Tï¿½[ï¿½oï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ï¿½ï¿½ßAï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 
     cd server
     %SELECTED_JAVA% -jar paper.jar -nogui
     if %errorlevel% == 0 exit
 )
 
-echo 5•bŒã‚ÉƒNƒ[ƒY‚µ‚Ü‚·B
+echo 5ï¿½bï¿½ï¿½ÉƒNï¿½ï¿½ï¿½[ï¿½Yï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
 timeout 5 /NOBREAK
 exit
