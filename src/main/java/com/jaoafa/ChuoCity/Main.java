@@ -118,7 +118,6 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
         getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiCreatureSpawn(), this);
-        getServer().getPluginManager().registerEvents(new Event_ChatChuoCity(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiInteract(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiTooManyArmorStand(), this);
