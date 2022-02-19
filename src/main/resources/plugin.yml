@@ -1,7 +1,7 @@
-name: CentralCity
-main: com.jaoafa.CentralCity.Main
+name: ChuoCity
+main: com.jaoafa.ChuoCity.Main
 version: ${project.version}
-description: CentralCity
+description: ChuoCity
 author: mine_book000
 database: true
 api-version: 1.18
@@ -9,8 +9,8 @@ softdepend:
   - WorldEdit
   - WorldGuard
 commands:
-  centralcity:
+  chuocity:
     description: 中央市関連の作業を行います。
     usage: |
-      /centralcity: 中央市関連の作業を行います。
-    permission: centralcity.centralcity
+      /chuocity: 中央市関連の作業を行います。
+    permission: chuocity.chuocity

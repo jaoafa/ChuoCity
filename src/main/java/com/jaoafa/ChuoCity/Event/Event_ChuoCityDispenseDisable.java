@@ -1,13 +1,13 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
+import com.jaoafa.ChuoCity.Main;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockDispenseEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class Event_CentralCityDispenseDisable implements Listener {
+public class Event_ChuoCityDispenseDisable implements Listener {
     @EventHandler
     public void onBlockDispenseEvent(BlockDispenseEvent event) {
         ItemStack item = event.getItem();
@@ -15,7 +15,7 @@ public class Event_CentralCityDispenseDisable implements Listener {
             return;
         }
 
-        if (!Main.isCentralCity(event.getBlock().getLocation())) {
+        if (!Main.isChuoCity(event.getBlock().getLocation())) {
             return;
         }
 

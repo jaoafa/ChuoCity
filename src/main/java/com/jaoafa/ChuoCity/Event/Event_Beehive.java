@@ -1,6 +1,6 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
+import com.jaoafa.ChuoCity.Main;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -9,7 +9,7 @@ import org.bukkit.event.entity.CreatureSpawnEvent;
 public class Event_Beehive implements Listener {
     @EventHandler
     public void onCreatureSpawnEvent(CreatureSpawnEvent event) {
-        if (!Main.isCentralCity(event.getLocation())) {
+        if (!Main.isChuoCity(event.getLocation())) {
             return;
         }
         if (event.getEntity().getType() != EntityType.BEE) {

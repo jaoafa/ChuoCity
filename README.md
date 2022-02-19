@@ -1,4 +1,4 @@
-# CentralCity
+# ChuoCity
 
 ![Java CI with Maven](https://github.com/jaoafa/Bakushinchi/workflows/Java%20CI%20with%20Maven/badge.svg)
 [![Support jdk](https://img.shields.io/badge/Support%20jdk-oraclejdk8-red.svg)](https://img.shields.io)

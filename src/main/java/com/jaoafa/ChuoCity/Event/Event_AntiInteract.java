@@ -1,7 +1,7 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
-import com.jaoafa.CentralCity.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -55,7 +55,7 @@ public class Event_AntiInteract implements Listener {
         }
         Action action = event.getAction();
 
-        if (!Main.isCentralCity(event.getClickedBlock().getLocation())) {
+        if (!Main.isChuoCity(event.getClickedBlock().getLocation())) {
             return;
         }
 

@@ -1,4 +1,4 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
@@ -7,7 +7,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 
-public class Event_ChatCentralCity implements Listener {
+public class Event_ChatChuoCity implements Listener {
     @EventHandler(priority = EventPriority.LOWEST)
     public void onAsyncPlayerChatEvent(AsyncChatEvent event) {
         Component message = event.message();

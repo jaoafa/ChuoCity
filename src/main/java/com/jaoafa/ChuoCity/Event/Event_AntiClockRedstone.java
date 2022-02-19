@@ -1,7 +1,7 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
-import com.jaoafa.CentralCity.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -37,7 +37,7 @@ public class Event_AntiClockRedstone implements Listener {
             return; // 0から15になる状態、つまりクロック回路
         }
 
-        if (!Main.isCentralCity(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 

@@ -1,4 +1,4 @@
-package com.jaoafa.CentralCity;
+package com.jaoafa.ChuoCity;
 
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;

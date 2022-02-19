@@ -1,7 +1,7 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
-import com.jaoafa.CentralCity.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -26,7 +26,7 @@ public class Event_PlaceTNT implements Listener {
             return;
         }
 
-        if (!Main.isCentralCity(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 
@@ -50,7 +50,7 @@ public class Event_PlaceTNT implements Listener {
             return;
         }
 
-        if (!Main.isCentralCity(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
         BlockFace face = ((Directional) event.getBlock().getBlockData()).getFacing();

@@ -1,7 +1,7 @@
-package com.jaoafa.CentralCity.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.CentralCity.Main;
-import com.jaoafa.CentralCity.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -35,7 +35,7 @@ public class Event_AntiCreatureSpawn implements Listener {
 
     @EventHandler
     public void CreatureSpawn(CreatureSpawnEvent event) {
-        if (!Main.isCentralCity(event.getLocation())) {
+        if (!Main.isChuoCity(event.getLocation())) {
             return;
         }
         LivingEntity ent = event.getEntity();
@@ -54,7 +54,7 @@ public class Event_AntiCreatureSpawn implements Listener {
             if (min_player == null) {
                 return;
             }
-            min_player.sendMessage(String.format("[CentralCity] %s負荷対策の為に中央市内での%sの召喚を禁止しています。ご協力をお願いします。",
+            min_player.sendMessage(String.format("[ChuoCity] %s負荷対策の為に中央市内での%sの召喚を禁止しています。ご協力をお願いします。",
                 ChatColor.GREEN, spawnEntityType.entityName));
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 String group = PermissionsManager.getPermissionMainGroup(p);

@@ -1,6 +1,6 @@
-package com.jaoafa.CentralCity.Tasks;
+package com.jaoafa.ChuoCity.Tasks;
 
-import com.jaoafa.CentralCity.Main;
+import com.jaoafa.ChuoCity.Main;
 import com.jaoafa.jaosuperachievement2.api.Achievementjao;
 import com.jaoafa.jaosuperachievement2.lib.Achievement;
 import org.bukkit.Bukkit;
@@ -22,7 +22,7 @@ public class Task_NewStep extends BukkitRunnable {
                 continue;
             }
             Location loc = player.getLocation();
-            if (Main.isCentralCity(loc)) {
+            if (Main.isChuoCity(loc)) {
                 continue;
             }
             Achievementjao.getAchievementAsync(player, Achievement.NEWSTEP);
