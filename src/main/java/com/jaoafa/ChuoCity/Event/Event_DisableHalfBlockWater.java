@@ -1,6 +1,6 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.ChuoCity.Main;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -57,7 +57,7 @@ public class Event_DisableHalfBlockWater implements Listener {
     public void onPlayerBucketEmptyEvent(PlayerBucketEmptyEvent event) {
         Player player = event.getPlayer();
         Block block = event.getBlockClicked();
-        if (!Main.isBakushinchi(player.getLocation())) {
+        if (!Main.isChuoCity(player.getLocation())) {
             return;
         }
 

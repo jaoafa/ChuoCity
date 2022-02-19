@@ -1,7 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -55,7 +55,7 @@ public class Event_AntiInteract implements Listener {
         }
         Action action = event.getAction();
 
-        if (!Main.isBakushinchi(event.getClickedBlock().getLocation())) {
+        if (!Main.isChuoCity(event.getClickedBlock().getLocation())) {
             return;
         }
 
@@ -71,7 +71,7 @@ public class Event_AntiInteract implements Listener {
             if (Arrays.stream(itemInteract.actions).noneMatch(a -> a == action)) {
                 continue;
             }
-            player.sendMessage(String.format("[BAKUSHINCHI] %s負荷対策の為に爆新地内での%sのアイテム使用を禁止しています。ご協力をお願いします。",
+            player.sendMessage(String.format("[CHUOCITY] %s負荷対策の為に中央市内での%sのアイテム使用を禁止しています。ご協力をお願いします。",
                 ChatColor.GREEN, itemInteract.itemName));
             for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 String _group = PermissionsManager.getPermissionMainGroup(p);

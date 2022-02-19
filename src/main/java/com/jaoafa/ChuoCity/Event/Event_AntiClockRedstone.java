@@ -1,7 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextDecoration;
@@ -37,7 +37,7 @@ public class Event_AntiClockRedstone implements Listener {
             return; // 0から15になる状態、つまりクロック回路
         }
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 
@@ -85,10 +85,10 @@ public class Event_AntiClockRedstone implements Listener {
         for (Player p : Bukkit.getOnlinePlayers()) {
             String _group = PermissionsManager.getPermissionMainGroup(p);
             if (_group.equalsIgnoreCase("Moderator") || _group.equalsIgnoreCase("Admin")) {
-                p.sendMessage("[AntiClock] " + ChatColor.RED + "爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
+                p.sendMessage("[AntiClock] " + ChatColor.RED + "中央市内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
                     + loc.getBlockZ() + "にあったクロック回路を停止しました。");
             }
-            Main.getMain().getLogger().info("[AntiClock] 爆新地内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
+            Main.getMain().getLogger().info("[AntiClock] 中央市内の" + loc.getBlockX() + " " + loc.getBlockY() + " "
                 + loc.getBlockZ() + "にあったクロック回路を停止しました。");
         }
     }

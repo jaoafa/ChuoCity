@@ -1,4 +1,4 @@
-package com.jaoafa.Bakushinchi;
+package com.jaoafa.ChuoCity;
 
 import net.luckperms.api.LuckPerms;
 import net.luckperms.api.LuckPermsProvider;

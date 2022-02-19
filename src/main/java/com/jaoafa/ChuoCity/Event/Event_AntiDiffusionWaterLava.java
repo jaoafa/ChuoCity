@@ -1,6 +1,6 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
+import com.jaoafa.ChuoCity.Main;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -16,7 +16,7 @@ public class Event_AntiDiffusionWaterLava implements Listener {
         Block newBlock = event.getToBlock();
         Location newLoc = newBlock.getLocation();
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 

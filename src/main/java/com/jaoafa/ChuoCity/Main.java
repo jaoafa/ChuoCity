@@ -1,8 +1,8 @@
-package com.jaoafa.Bakushinchi;
+package com.jaoafa.ChuoCity;
 
-import com.jaoafa.Bakushinchi.Command.Cmd_Bakushinchi;
-import com.jaoafa.Bakushinchi.Event.*;
-import com.jaoafa.Bakushinchi.Tasks.Task_NewStep;
+import com.jaoafa.ChuoCity.Command.Cmd_ChuoCity;
+import com.jaoafa.ChuoCity.Event.*;
+import com.jaoafa.ChuoCity.Tasks.Task_NewStep;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
@@ -37,7 +37,7 @@ public class Main extends JavaPlugin {
         Main = main;
     }
 
-    public static boolean isBakushinchi(Location loc) {
+    public static boolean isChuoCity(Location loc) {
         if (!loc.getWorld().getName().equalsIgnoreCase("Jao_Afa")) {
             return false; // Jao_Afa以外では適用しない
         }
@@ -62,7 +62,7 @@ public class Main extends JavaPlugin {
         }
         Collections.reverse(inheritance);
         ProtectedRegion firstregion = inheritance.get(0);
-        return firstregion.getId().startsWith("bakushinchi_");
+        return firstregion.getId().startsWith("chuocity_");
     }
 
     public static ProtectedRegion getTopRegion(Location loc) {
@@ -111,14 +111,13 @@ public class Main extends JavaPlugin {
     public void onEnable() {
         setMain(this);
 
-        Objects.requireNonNull(getCommand("bakushinchi")).setExecutor(new Cmd_Bakushinchi());
-        getServer().getPluginManager().registerEvents(new Event_BakushinchiRailChecker(), this);
+        Objects.requireNonNull(getCommand("chuocity")).setExecutor(new Cmd_ChuoCity());
+        getServer().getPluginManager().registerEvents(new Event_ChuoCityRailChecker(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiBlockUnderDestroy(), this);
-        getServer().getPluginManager().registerEvents(new Event_BakushinchiY50Destroy(), this);
+        getServer().getPluginManager().registerEvents(new Event_ChuoCityY50Destroy(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
         getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiCreatureSpawn(), this);
-        getServer().getPluginManager().registerEvents(new Event_ChatBakushinchi(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiInteract(), this);
         getServer().getPluginManager().registerEvents(new Event_AntiTooManyArmorStand(), this);

@@ -1,7 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -11,7 +11,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 
-public class Event_BakushinchiY50Destroy implements Listener {
+public class Event_ChuoCityY50Destroy implements Listener {
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
     public void onAntiBlockUnderDestroy(BlockBreakEvent event) {
         Player player = event.getPlayer();
@@ -19,7 +19,7 @@ public class Event_BakushinchiY50Destroy implements Listener {
         Location loc = block.getLocation();
         int y = loc.getBlockY();
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 

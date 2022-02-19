@@ -1,7 +1,7 @@
-package com.jaoafa.Bakushinchi.Event;
+package com.jaoafa.ChuoCity.Event;
 
-import com.jaoafa.Bakushinchi.Main;
-import com.jaoafa.Bakushinchi.PermissionsManager;
+import com.jaoafa.ChuoCity.Main;
+import com.jaoafa.ChuoCity.PermissionsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -33,7 +33,7 @@ public class Event_AntiBlockUnderDestroy implements Listener {
         int y = loc.getBlockY();
         int z = loc.getBlockZ();
 
-        if (!Main.isBakushinchi(loc)) {
+        if (!Main.isChuoCity(loc)) {
             return;
         }
 

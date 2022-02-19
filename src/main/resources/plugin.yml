@@ -1,7 +1,7 @@
-name: Bakushinchi
-main: com.jaoafa.Bakushinchi.Main
+name: ChuoCity
+main: com.jaoafa.ChuoCity.Main
 version: ${project.version}
-description: Bakushinchi
+description: ChuoCity
 author: mine_book000
 database: true
 api-version: 1.18
@@ -9,8 +9,8 @@ softdepend:
   - WorldEdit
   - WorldGuard
 commands:
-  bakushinchi:
-    description: 爆新地関連の作業を行います。
+  chuocity:
+    description: 中央市関連の作業を行います。
     usage: |
-      /bakushinchi: 爆新地関連の作業を行います。
-    permission: bakushinchi.bakushinchi
+      /chuocity: 中央市関連の作業を行います。
+    permission: chuocity.chuocity
