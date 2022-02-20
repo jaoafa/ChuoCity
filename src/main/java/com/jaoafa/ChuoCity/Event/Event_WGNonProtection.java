@@ -9,6 +9,7 @@ import com.sk89q.worldedit.extent.AbstractDelegateExtent;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.util.eventbus.Subscribe;
 import com.sk89q.worldedit.world.block.BlockStateHolder;
+import com.sk89q.worldguard.LocalPlayer;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -23,6 +24,10 @@ import org.bukkit.event.block.BlockPlaceEvent;
 public class Event_WGNonProtection implements Listener {
     @Subscribe
     public void onWEEdit(EditSessionEvent event) {
+        if (Main.getWorldGuard() == null) {
+            return;
+        }
+
         if (event.getStage() == EditSession.Stage.BEFORE_REORDER) {
             return;
         }
@@ -42,6 +47,7 @@ public class Event_WGNonProtection implements Listener {
         }
         event.setExtent(new AbstractDelegateExtent(event.getExtent()) {
             private boolean canBuild(int x, int y, int z) {
+                LocalPlayer localPlayer = Main.getWorldGuard().wrapPlayer(player);
                 if (Main.isChuoCity(new Location(player.getWorld(), x, y, z))) {
                     return true;
                 }
@@ -52,11 +58,10 @@ public class Event_WGNonProtection implements Listener {
                 if (region == null) {
                     return false; // 誰も保護していない
                 }
-                if (region.getOwners().contains(player.getUniqueId())) {
+                if (region.isOwner(localPlayer)) {
                     return true; // オーナー
                 }
-
-                return region.getMembers().contains(player.getUniqueId()); // メンバー
+                return region.isMember(localPlayer); // メンバー
             }
 
             @Override
