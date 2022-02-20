@@ -91,14 +91,13 @@ public class Main extends JavaPlugin {
         return inheritance.get(0);
     }
 
-    private static WorldGuardPlugin getWorldGuard() {
+    public static WorldGuardPlugin getWorldGuard() {
         Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("WorldGuard");
 
         if (plugin instanceof WorldGuardPlugin) {
             return (WorldGuardPlugin) plugin;
         }
         return null;
-
     }
 
     /**
