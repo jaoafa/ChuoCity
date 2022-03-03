@@ -15,75 +15,66 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockRedstoneEvent;
+import org.bukkit.event.block.BlockPistonExtendEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Event_AntiClockRedstone implements Listener {
-    private record RSData(Long ms, Integer times) {
+public class Event_AntiClockPiston implements Listener {
+    private record PistonData(Long ms, Integer times) {
     }
 
-    final Map<Location, RSData> redStoneClocks = new HashMap<>();
+    final Map<Location, PistonData> pistonClocks = new HashMap<>();
 
-    ArrayList<Material> forbiddenBlocks = new ArrayList<>() {{
-        add(Material.REDSTONE_WIRE);
-        add(Material.REPEATER);
-        add(Material.COMPARATOR);
-    }};
+    // ピストンは必要に応じて対応。
 
     @EventHandler
-    public void OnRedstone(BlockRedstoneEvent event) {
+    public void onPistonMove(BlockPistonExtendEvent event) {
         Block block = event.getBlock();
         Location loc = block.getLocation();
 
         if (!Main.isChuoCity(loc)) return;
 
-        if (!forbiddenBlocks.contains(block.getType())) return;
-        // 0から15になる状態、つまりクロック回路
-        if (event.getOldCurrent() == event.getNewCurrent()) return;
-
         long milliSec = System.currentTimeMillis();
 
         // ADD NASA
-        if (!redStoneClocks.containsKey(loc)) {
-            redStoneClocks.put(loc, new RSData(milliSec, 1));
+        if (!pistonClocks.containsKey(loc)) {
+            pistonClocks.put(loc, new PistonData(milliSec, 1));
             return;
         }
 
         // 1秒間に1回未満のクロック回路で3回それが繰り返された場合。
-
-        long milliSecOld = redStoneClocks.get(loc).ms;
+        long milliSecOld = pistonClocks.get(loc).ms;
         long subtraction = milliSec - milliSecOld;
 
         if (subtraction > 1000) {
             // 1s (20tick, 1000ms) 以上
-            redStoneClocks.remove(loc);
+            pistonClocks.remove(loc);
             return;
         }
-        if (redStoneClocks.containsKey(loc) && redStoneClocks.get(loc).times <= 3) {
+        if (pistonClocks.containsKey(loc) && pistonClocks.get(loc).times <= 3) {
             // あって、3回未満
-            redStoneClocks.put(loc, new RSData(milliSec, redStoneClocks.get(loc).times + 1));
+            pistonClocks.put(loc, new PistonData(milliSec, pistonClocks.get(loc).times + 1));
             return;
-        } else if (!redStoneClocks.containsKey(loc)) {
+        } else if (!pistonClocks.containsKey(loc)) {
             // ない
-            redStoneClocks.put(loc, new RSData(milliSec, 1));
+            pistonClocks.put(loc, new PistonData(milliSec, 1));
             return;
         }
         // あって、5回より上(6回以上)
 
-        redStoneClocks.remove(loc);
+        pistonClocks.remove(loc);
+        event.setCancelled(true);
 
         new BukkitRunnable() {
             @Override
             public void run() {
                 block.setType(Material.OAK_SIGN);
                 Sign sign = (Sign) block.getState();
-                sign.line(0, Component.text("[AntiClock]", NamedTextColor.DARK_RED, TextDecoration.BOLD));
+                sign.line(0, Component.text("[AntiPiston]", NamedTextColor.DARK_RED, TextDecoration.BOLD));
                 sign.line(1, Component.text("早すぎるクロック"));
-                sign.line(2, Component.text("回路の利用は"));
+                sign.line(2, Component.text("ピストンの利用は"));
                 sign.line(3, Component.text("避けてください。"));
                 sign.update();
                 cancel();
@@ -92,7 +83,7 @@ public class Event_AntiClockRedstone implements Listener {
 
         String locationText = "%s %s %s".formatted(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
         var text = Component.text().append(
-                Component.text("[AntiClock] "),
+                Component.text("[AntiClockPiston] "),
                 Component.text("中央市内の ", NamedTextColor.RED),
                 Component.text(
                         locationText,
@@ -102,7 +93,7 @@ public class Event_AntiClockRedstone implements Listener {
                              .hoverEvent(HoverEvent.showText(Component.text(locationText + " にテレポート")))
                              .build()
                 ),
-                Component.text("にあったクロック回路を停止しました。", NamedTextColor.RED)
+                Component.text("にあったクロックピストンを停止しました。", NamedTextColor.RED)
         );
 
         //AMに送信

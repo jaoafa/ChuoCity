@@ -14,13 +14,11 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Main extends JavaPlugin {
     private static Main Main = null;
@@ -111,18 +109,22 @@ public class Main extends JavaPlugin {
         setMain(this);
 
         Objects.requireNonNull(getCommand("chuocity")).setExecutor(new Cmd_ChuoCity());
-        getServer().getPluginManager().registerEvents(new Event_ChuoCityRailChecker(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiBlockUnderDestroy(), this);
-        getServer().getPluginManager().registerEvents(new Event_ChuoCityY50Destroy(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiClockRedstone(), this);
-        getServer().getPluginManager().registerEvents(new Event_PlaceTNT(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiCreatureSpawn(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiDiffusionWaterLava(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiInteract(), this);
-        getServer().getPluginManager().registerEvents(new Event_AntiTooManyArmorStand(), this);
-        getServer().getPluginManager().registerEvents(new Event_RegionCommand(), this);
-        getServer().getPluginManager().registerEvents(new Event_Bamboo(), this);
-        getServer().getPluginManager().registerEvents(new Event_Beehive(), this);
+
+        new ArrayList<Listener>() {{
+            add(new Event_ChuoCityRailChecker());
+            add(new Event_AntiBlockUnderDestroy());
+            add(new Event_ChuoCityY50Destroy());
+            add(new Event_AntiClockRedstone());
+            add(new Event_AntiClockPiston());
+            add(new Event_PlaceTNT());
+            add(new Event_AntiCreatureSpawn());
+            add(new Event_AntiDiffusionWaterLava());
+            add(new Event_AntiInteract());
+            add(new Event_AntiTooManyArmorStand());
+            add(new Event_RegionCommand());
+            add(new Event_Bamboo());
+            add(new Event_Beehive());
+        }}.forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
 
