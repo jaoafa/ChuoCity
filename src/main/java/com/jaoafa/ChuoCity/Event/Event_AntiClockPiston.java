@@ -3,6 +3,7 @@ package com.jaoafa.ChuoCity.Event;
 import com.jaoafa.ChuoCity.Main;
 import com.jaoafa.ChuoCity.PermissionsManager;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -22,12 +23,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Event_AntiClockPiston implements Listener {
-    private record PistonData(Long ms, Integer times) {
+    private record PistonData(long ms, int times) {
     }
 
     final Map<Location, PistonData> pistonClocks = new HashMap<>();
-
-    // ピストンは必要に応じて対応。
 
     @EventHandler
     public void onPistonMove(BlockPistonExtendEvent event) {
@@ -82,7 +81,7 @@ public class Event_AntiClockPiston implements Listener {
         }.runTaskLater(Main.getJavaPlugin(), 1);
 
         String locationText = "%s %s %s".formatted(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-        var text = Component.text().append(
+        TextComponent.Builder text = Component.text().append(
                 Component.text("[AntiClockPiston] "),
                 Component.text("中央市内の ", NamedTextColor.RED),
                 Component.text(

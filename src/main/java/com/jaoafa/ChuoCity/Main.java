@@ -110,21 +110,21 @@ public class Main extends JavaPlugin {
 
         Objects.requireNonNull(getCommand("chuocity")).setExecutor(new Cmd_ChuoCity());
 
-        new ArrayList<Listener>() {{
-            add(new Event_ChuoCityRailChecker());
-            add(new Event_AntiBlockUnderDestroy());
-            add(new Event_ChuoCityY50Destroy());
-            add(new Event_AntiClockRedstone());
-            add(new Event_AntiClockPiston());
-            add(new Event_PlaceTNT());
-            add(new Event_AntiCreatureSpawn());
-            add(new Event_AntiDiffusionWaterLava());
-            add(new Event_AntiInteract());
-            add(new Event_AntiTooManyArmorStand());
-            add(new Event_RegionCommand());
-            add(new Event_Bamboo());
-            add(new Event_Beehive());
-        }}.forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
+        List.of(
+            new Event_ChuoCityRailChecker(),
+            new Event_AntiBlockUnderDestroy(),
+            new Event_ChuoCityY50Destroy(),
+            new Event_AntiClockRedstone(),
+            new Event_AntiClockPiston(),
+            new Event_PlaceTNT(),
+            new Event_AntiCreatureSpawn(),
+            new Event_AntiDiffusionWaterLava(),
+            new Event_AntiInteract(),
+            new Event_AntiTooManyArmorStand(),
+            new Event_RegionCommand(),
+            new Event_Bamboo(),
+            new Event_Beehive()
+        ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
         WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
 

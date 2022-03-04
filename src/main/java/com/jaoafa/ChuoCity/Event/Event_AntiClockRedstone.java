@@ -3,6 +3,7 @@ package com.jaoafa.ChuoCity.Event;
 import com.jaoafa.ChuoCity.Main;
 import com.jaoafa.ChuoCity.PermissionsManager;
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.event.HoverEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -20,19 +21,20 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Event_AntiClockRedstone implements Listener {
-    private record RSData(Long ms, Integer times) {
+    private record RSData(long ms, int times) {
     }
 
     final Map<Location, RSData> redStoneClocks = new HashMap<>();
 
-    ArrayList<Material> forbiddenBlocks = new ArrayList<>() {{
-        add(Material.REDSTONE_WIRE);
-        add(Material.REPEATER);
-        add(Material.COMPARATOR);
-    }};
+    List<Material> forbiddenBlocks = List.of(
+        Material.REDSTONE_WIRE,
+        Material.REPEATER,
+        Material.COMPARATOR
+    );
 
     @EventHandler
     public void OnRedstone(BlockRedstoneEvent event) {
@@ -91,7 +93,7 @@ public class Event_AntiClockRedstone implements Listener {
         }.runTaskLater(Main.getJavaPlugin(), 1);
 
         String locationText = "%s %s %s".formatted(loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
-        var text = Component.text().append(
+        TextComponent.Builder text = Component.text().append(
                 Component.text("[AntiClock] "),
                 Component.text("中央市内の ", NamedTextColor.RED),
                 Component.text(
