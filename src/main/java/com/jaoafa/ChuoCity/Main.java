@@ -126,7 +126,7 @@ public class Main extends JavaPlugin {
             new Event_Beehive()
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
-        WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
+        // WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
 
         new Task_NewStep().runTaskTimerAsynchronously(this, 0L, 1200L); // per 1 minute
     }
