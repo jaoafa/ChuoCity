@@ -19,10 +19,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockRedstoneEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Event_AntiClockRedstone implements Listener {
     private record RSData(long ms, int times) {
@@ -31,9 +28,9 @@ public class Event_AntiClockRedstone implements Listener {
     final Map<Location, RSData> redStoneClocks = new HashMap<>();
 
     List<Material> forbiddenBlocks = List.of(
-        Material.REDSTONE_WIRE,
-        Material.REPEATER,
-        Material.COMPARATOR
+            Material.REDSTONE_WIRE,
+            Material.REPEATER,
+            Material.COMPARATOR
     );
 
     @EventHandler
@@ -44,38 +41,44 @@ public class Event_AntiClockRedstone implements Listener {
         if (!Main.isChuoCity(loc)) return;
 
         if (!forbiddenBlocks.contains(block.getType())) return;
-        // 0から15になる状態、つまりクロック回路
-        if (event.getOldCurrent() == event.getNewCurrent()) return;
+
+        int oldC = event.getOldCurrent();
+        int newC = event.getNewCurrent();
+
+        if ((oldC == newC) || (oldC != 0) && (newC != 0)) return;
 
         long milliSec = System.currentTimeMillis();
 
+        boolean nearEntryExists = redStoneClocks.entrySet().stream().anyMatch(entry -> {
+            Location dataLoc = entry.getKey();
+            return (dataLoc.distance(loc) == 1);
+        });
+
         // ADD NASA
-        if (!redStoneClocks.containsKey(loc)) {
+        if (!redStoneClocks.containsKey(loc) && !nearEntryExists) {
             redStoneClocks.put(loc, new RSData(milliSec, 1));
             return;
         }
+        
+        RSData clockData = redStoneClocks.get(loc);
 
-        // 1秒間に1回未満のクロック回路で3回それが繰り返された場合。
+        if (clockData == null) return;
 
-        long milliSecOld = redStoneClocks.get(loc).ms;
+        long milliSecOld = clockData.ms;
         long subtraction = milliSec - milliSecOld;
 
+        // 1秒間に1回未満のクロック回路で5回それが繰り返された場合。
         if (subtraction > 1000) {
             // 1s (20tick, 1000ms) 以上
             redStoneClocks.remove(loc);
             return;
         }
-        if (redStoneClocks.containsKey(loc) && redStoneClocks.get(loc).times <= 3) {
-            // あって、3回未満
-            redStoneClocks.put(loc, new RSData(milliSec, redStoneClocks.get(loc).times + 1));
-            return;
-        } else if (!redStoneClocks.containsKey(loc)) {
-            // ない
-            redStoneClocks.put(loc, new RSData(milliSec, 1));
+        if (redStoneClocks.containsKey(loc) && clockData.times < 5) {
+            // あって、5回未満
+            redStoneClocks.put(loc, new RSData(milliSec, clockData.times + 1));
             return;
         }
         // あって、5回より上(6回以上)
-
         redStoneClocks.remove(loc);
 
         new BukkitRunnable() {
@@ -88,6 +91,7 @@ public class Event_AntiClockRedstone implements Listener {
                 sign.line(2, Component.text("回路の利用は"));
                 sign.line(3, Component.text("避けてください。"));
                 sign.update();
+
                 cancel();
             }
         }.runTaskLater(Main.getJavaPlugin(), 1);
@@ -104,7 +108,7 @@ public class Event_AntiClockRedstone implements Listener {
                              .hoverEvent(HoverEvent.showText(Component.text(locationText + " にテレポート")))
                              .build()
                 ),
-                Component.text("にあったクロック回路を停止しました。", NamedTextColor.RED)
+                Component.text(" にあったクロック回路を停止しました。", NamedTextColor.RED)
         );
 
         //AMに送信
