@@ -3,7 +3,6 @@ package com.jaoafa.ChuoCity;
 import com.jaoafa.ChuoCity.Command.Cmd_ChuoCity;
 import com.jaoafa.ChuoCity.Event.*;
 import com.jaoafa.ChuoCity.Tasks.Task_NewStep;
-import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.math.BlockVector3;
 import com.sk89q.worldedit.world.World;
 import com.sk89q.worldguard.WorldGuard;
@@ -14,11 +13,13 @@ import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Objects;
 
 public class Main extends JavaPlugin {
     private static Main Main = null;
@@ -123,7 +124,8 @@ public class Main extends JavaPlugin {
             new Event_AntiTooManyArmorStand(),
             new Event_RegionCommand(),
             new Event_Bamboo(),
-            new Event_Beehive()
+            new Event_Beehive(),
+            new Event_Inspect()
         ).forEach(listener -> getServer().getPluginManager().registerEvents(listener, this));
 
         // WorldEdit.getInstance().getEventBus().register(new Event_WGNonProtection());
