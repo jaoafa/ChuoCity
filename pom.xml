@@ -68,6 +68,10 @@
             <id>tomacheese-repo</id>
             <url>https://repo.tomacheese.com</url>
         </repository>
+        <repository>
+            <id>playpro-repo</id>
+            <url>https://maven.playpro.com</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -99,6 +103,12 @@
             <groupId>com.jaoafa</groupId>
             <artifactId>jaosuperachievement2</artifactId>
             <version>2.5.34</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>net.coreprotect</groupId>
+            <artifactId>coreprotect</artifactId>
+            <version>21.3</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

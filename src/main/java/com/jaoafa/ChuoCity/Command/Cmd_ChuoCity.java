@@ -1,5 +1,6 @@
 package com.jaoafa.ChuoCity.Command;
 
+import com.jaoafa.ChuoCity.Event.Event_Inspect;
 import com.jaoafa.ChuoCity.Main;
 import com.jaoafa.ChuoCity.PermissionsManager;
 import com.jaoafa.ChuoCity.Tasks.Task_ChuoCityFlat;
@@ -59,7 +60,7 @@ public class Cmd_ChuoCity implements CommandExecutor {
         }
 
         if (args.length == 2) {
-            if (args[0].equalsIgnoreCase("claim")) {
+            if ("claim".startsWith(args[0])) {
                 String id = args[1];
                 WorldEditPlugin we = getWorldEdit();
                 WorldGuardPlugin wg = getWorldGuard();
@@ -93,13 +94,13 @@ public class Cmd_ChuoCity implements CommandExecutor {
                     RegionManager rm = container.get(selectionWorld);
                     if (rm == null) {
                         player.sendMessage(
-                            "[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。ワールドの取得に失敗しました。");
+                                "[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。ワールドの取得に失敗しました。");
                         return true;
                     }
 
                     if (rm.hasRegion(id)) {
                         player.sendMessage(
-                            "[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。指定された範囲名は既に使用されています。");
+                                "[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。指定された範囲名は既に使用されています。");
                         return true;
                     }
 
@@ -129,14 +130,14 @@ public class Cmd_ChuoCity implements CommandExecutor {
                     if (!firstregion.getId().startsWith("chuocity_")) {
                         // 中央市じゃない
                         player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。このコマンドは中央市内でのみ使用できます。("
-                            + firstregion.getId() + ")");
+                                + firstregion.getId() + ")");
                         return true;
                     }
 
                     if (!firstregion.getId().equals(lastregion.getId())) {
                         // ラストが中央市じゃない
                         player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "指定された範囲を保護できません。次の範囲と被っています: "
-                            + lastregion.getId());
+                                + lastregion.getId());
                         return true;
                     }
 
@@ -151,13 +152,13 @@ public class Cmd_ChuoCity implements CommandExecutor {
 
                     rm.addRegion(protectedregion);
                     player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "次の名前で保護を設定しました: " + protectedregion.getId() + "\n"
-                        + "保護設定編集には/rgコマンドをご利用ください。");
+                            + "保護設定編集には/rgコマンドをご利用ください。");
                     if (!((protectedregion.getMinimumPoint().getBlockY() == -64
-                        && protectedregion.getMaximumPoint().getBlockY() == 319)
-                        || (protectedregion.getMinimumPoint().getBlockY() == 319
-                        && protectedregion.getMaximumPoint().getBlockY() == -64))) {
+                            && protectedregion.getMaximumPoint().getBlockY() == 319)
+                            || (protectedregion.getMinimumPoint().getBlockY() == 319
+                            && protectedregion.getMaximumPoint().getBlockY() == -64))) {
                         player.sendMessage("[ChuoCity] " + ChatColor.GREEN
-                            + "保護範囲のY値が0～255ではありません。//expand vertを実行して-64～319を選択してから保護することをお勧めします。");
+                                + "保護範囲のY値が0～255ではありません。//expand vertを実行して-64～319を選択してから保護することをお勧めします。");
                     }
                     return true;
                 } catch (IncompleteRegionException e) {
@@ -166,7 +167,7 @@ public class Cmd_ChuoCity implements CommandExecutor {
                 }
             }
         } else if (args.length == 1) {
-            if (args[0].equalsIgnoreCase("flat")) {
+            if ("flat".startsWith(args[0])) {
                 String group = PermissionsManager.getPermissionMainGroup(player);
                 if (!group.equalsIgnoreCase("Admin") && !group.equalsIgnoreCase("Moderator")) {
                     player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "あなたはこのコマンドを使用できません。");
@@ -190,6 +191,16 @@ public class Cmd_ChuoCity implements CommandExecutor {
                     player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "範囲が選択されていません。");
                     return true;
                 }
+            } else if ("inspect".startsWith(args[0])) {
+                boolean isInspect = Event_Inspect.inspects.contains(player.getUniqueId());
+                if (isInspect) {
+                    Event_Inspect.inspects.remove(player.getUniqueId());
+                    player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "インスペクタモードを終了しました。");
+                } else {
+                    Event_Inspect.inspects.add(player.getUniqueId());
+                    player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "インスペクタモードを開始しました。");
+                }
+                return true;
             }
         }
         player.sendMessage(
