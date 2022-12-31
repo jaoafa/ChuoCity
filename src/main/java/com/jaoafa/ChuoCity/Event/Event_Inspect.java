@@ -6,6 +6,8 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.format.NamedTextColor;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -13,6 +15,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 import java.text.SimpleDateFormat;
@@ -36,6 +39,12 @@ public class Event_Inspect implements Listener {
             return;
         }
 
+        ItemStack is = player.getInventory().getItemInMainHand();
+        if (is.getType() != Material.STICK) {
+            return;
+        }
+
+
         event.setCancelled(true);
 
         CoreProtectAPI cp = getCoreProtect();
@@ -43,7 +52,6 @@ public class Event_Inspect implements Listener {
             player.sendMessage("[Inspect] CoreProtectが見つかりませんでした。");
             return;
         }
-
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
@@ -87,12 +95,10 @@ public class Event_Inspect implements Listener {
         }
     }
 
-    private long getDaysSinceLastLogin(String playerName){
-        Player player = Bukkit.getPlayerExact(playerName);
-        if(player == null){
-            return 0;
-        }
-        if(player.getLastLogin() == 0){
+    private long getDaysSinceLastLogin(String playerName) {
+        //noinspection deprecation
+        OfflinePlayer player = Bukkit.getOfflinePlayer(playerName);
+        if (player.getLastLogin() == 0) {
             return 0;
         }
         return Duration.between(

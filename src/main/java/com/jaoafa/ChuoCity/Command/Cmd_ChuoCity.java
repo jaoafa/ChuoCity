@@ -198,7 +198,7 @@ public class Cmd_ChuoCity implements CommandExecutor {
                     player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "インスペクタモードを終了しました。");
                 } else {
                     Event_Inspect.inspects.add(player.getUniqueId());
-                    player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "インスペクタモードを開始しました。");
+                    player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "インスペクタモードを開始しました。棒で対象ブロックを叩くことで情報を表示します。");
                 }
                 return true;
             }
