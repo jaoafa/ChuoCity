@@ -56,14 +56,14 @@ public class Task_ChuoCityFlat extends BukkitRunnable {
             }
             case 6 -> {
                 player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "土範囲であるy67～y67を選択: //pos1,2 x,y,z");
-                boolean dirt_pos1 = player.performCommand(String.format("/pos1 %d,%d,%d", region.getMinimumPoint().getBlockX(), 66, region.getMinimumPoint().getBlockZ()));
+                boolean dirt_pos1 = player.performCommand(String.format("/pos1 %d,%d,%d", region.getMinimumPoint().getBlockX(), 67, region.getMinimumPoint().getBlockZ()));
                 player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "pos1 -> " + (dirt_pos1 ? "成功" : "失敗"));
-                boolean dirt_pos2 = player.performCommand(String.format("/pos2 %d,%d,%d", region.getMaximumPoint().getBlockX(), 66, region.getMaximumPoint().getBlockZ()));
+                boolean dirt_pos2 = player.performCommand(String.format("/pos2 %d,%d,%d", region.getMaximumPoint().getBlockX(), 67, region.getMaximumPoint().getBlockZ()));
                 player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "pos2 -> " + (dirt_pos2 ? "成功" : "失敗"));
             }
             case 7 -> {
                 player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "粗い土に変更: //set coarse_dirt");
-                boolean set_dirt = player.performCommand("/set dirt");
+                boolean set_dirt = player.performCommand("/set coarse_dirt");
                 player.sendMessage("[ChuoCity] " + ChatColor.GREEN + "-> " + (set_dirt ? "成功" : "失敗"));
             }
             case 8 -> {
