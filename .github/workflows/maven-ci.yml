@@ -57,49 +57,49 @@ jobs:
 
       - name: Deploy
         id: deployRequest
-        uses: fjogeleit/http-request-action@master
-        with:
-          url: ${{ secrets.DEPLOY_URL }}
-          method: 'POST'
-          bearerToken: ${{ secrets.DEPLOY_KEY }}
-          ignoreStatusCodes: '500'
-          timeout: 600000
-
-      - name: Show Response
-        run: echo ${{ steps.deployRequest.outputs.response }}
+        run: |
+          curl -i -X POST -H 'Authorization: Bearer ${{ secrets.DEPLOY_KEY }}' "${{ secrets.DEPLOY_URL }}" > response.txt
+          cat response.txt
 
       - name: Is Successful Deploy
-        if: ${{ fromJson(steps.deployRequest.outputs.response).status == 'SUCCESSFUL' }}
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            # :white_check_mark: デプロイが完了しました
+        if: ${{ success() }}
+        run: |
+          cat <<EOF > comment.txt
+          # :white_check_mark: デプロイが完了しました
 
-            プルリクエストがマージされたため、本番環境へのデプロイを行いました。
-            バージョンは `${{ needs.maven-ci.outputs.version }}` です。稼働中バージョンの確認は Minecraft サーバ内で `/ver AntiAlts3` を実行することで確認できます。
-            反映は本番環境の再起動後ですので、アクティブログインユーザーの同意を得て再起動するか、3時の自動再起動を待ってください。
+          プルリクエストがマージされたため、本番環境へのデプロイを行いました。
+          バージョンは \`${{ needs.maven-ci.outputs.version }}\` です。
+          反映は本番環境の再起動後ですので、アクティブログインユーザーの同意を得て再起動するか、3時の自動再起動を待ってください。
 
-            https://github.com/${{ github.repository }}/releases/tag/${{ needs.maven-ci.outputs.tag }}
+          https://github.com/${{ github.repository }}/releases/tag/${{ needs.maven-ci.outputs.tag }}
+          EOF
+
+          gh pr comment ${{ github.event.pull_request.number }} -R ${{ github.repository }} -F comment.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Is Failed Deploy
-        if: ${{ fromJson(steps.deployRequest.outputs.response).status == 'ERROR' }}
-        uses: peter-evans/create-or-update-comment@v3
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            # :x: デプロイに失敗しました
+        if: ${{ failure() }}
+        run: |
+          cat <<EOF > comment.txt
+          # :x: デプロイに失敗しました
 
-            プルリクエストがマージされたため、本番環境へのデプロイを行おうとしましたが失敗しました。
-            エラー内容は以下の通りです。
+          プルリクエストがマージされたため、本番環境へのデプロイを行おうとしましたが失敗しました。
+          エラー内容は以下の通りです。
 
-            ```
-            ${{ fromJson(steps.deployRequest.outputs.response).type }} (${{ fromJson(steps.deployRequest.outputs.response).type_ja }}) - ${{ fromJson(steps.deployRequest.outputs.response).status }} (${{ fromJson(steps.deployRequest.outputs.response).status_ja }})
-            ${{ fromJson(steps.deployRequest.outputs.response).message }}
-            ```
+          \`\`\`
+          $(cat response.txt)
+          \`\`\`
+
+          https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          EOF
+
+          gh pr comment ${{ github.event.pull_request.number }} -R ${{ github.repository }} -F comment.txt
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Is Successful Deploy
-        if: ${{ fromJson(steps.deployRequest.outputs.response).status == 'SUCCESSFUL' }}
+        if: ${{ success() }}
         uses: chrnorm/deployment-status@v2.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -107,7 +107,7 @@ jobs:
           deployment-id: ${{ steps.deployment.outputs.deployment_id }}
 
       - name: Update deployment status (failure)
-        if: ${{ failure() || fromJson(steps.deployRequest.outputs.response).status == 'ERROR' }}
+        if: ${{ failure() }}
         uses: chrnorm/deployment-status@v2.0.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
