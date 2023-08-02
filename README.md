@@ -1,3 +1,12 @@
+# _Repository archived_
+
+本リポジトリは、jao Minecraft Server の Minecraft サーバサービス終了に伴いアーカイブ化されました。  
+今後、原則として本リポジトリの内容がメンテナンスされることはありません。
+
+本リポジトリに含まれるコンテンツは、継続して [LICENSE](LICENSE) で明示されているライセンスの下で公開されます。なお、事前予告なく非公開となる可能性もあります。
+
+---
+
 # ChuoCity
 
 ![Java CI with Maven](https://github.com/jaoafa/ChuoCity/workflows/Java%20CI%20with%20Maven/badge.svg)
